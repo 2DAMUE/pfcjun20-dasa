@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
     }
 
     private void handleMenu() {
-        mMenuAdapter = new MenuAdapter(mTitles);
+        mMenuAdapter = new MenuAdapter(mTitles,this);
 
         mViewHolder.mDuoMenuView.setOnMenuClickListener(this);
         mViewHolder.mDuoMenuView.setAdapter(mMenuAdapter);

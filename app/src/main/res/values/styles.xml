@@ -20,6 +20,10 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/Bordeaux</item>
+        <item name="colorPrimaryDark">@color/Bordeaux</item>
+        <item name="colorAccent">@color/Bordeaux</item>
+        <item name="android:navigationBarColor">@color/Bordeaux</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>

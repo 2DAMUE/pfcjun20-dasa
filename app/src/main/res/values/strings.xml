@@ -2,11 +2,13 @@
     <string name="app_name">Covidata</string>
 
     <array name="menuOptions">
-        <item>Home</item>
-        <item>Personal</item>
-        <item>High scores</item>
-        <item>Settings</item>
-        <item>About</item>
+        <item>Datos Globales</item>
+        <item>Datos España</item>
+        <item>Comunidades \nAutónomas</item>
+        <item>Artículos</item>
+        <item>Autodiagnóstico y Recomendaciones</item>
+        <item>Contacto</item>
+        <item>Datos</item>
     </array>
 
     <!-- TODO: Remove or change this placeholder text -->
