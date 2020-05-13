@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import nl.psdcompany.duonavigationdrawer.views.DuoOptionView;
 
 class MenuAdapter extends BaseAdapter {
+
     private ArrayList<String> mOptions = new ArrayList<>();
     private ArrayList<DuoOptionView> mOptionViews = new ArrayList<>();
 

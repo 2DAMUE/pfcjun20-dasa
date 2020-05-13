@@ -118,9 +118,9 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
         private Toolbar mToolbar;
 
         ViewHolder() {
-            mDuoDrawerLayout = (DuoDrawerLayout) findViewById(R.id.drawer);
+            mDuoDrawerLayout = findViewById(R.id.drawer);
             mDuoMenuView = (DuoMenuView) mDuoDrawerLayout.getMenuView();
-            mToolbar = (Toolbar) findViewById(R.id.toolbar);
+            mToolbar = findViewById(R.id.toolbar);
         }
     }
 }

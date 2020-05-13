@@ -27,7 +27,7 @@ public class NuevoFragment extends Fragment {
                 Toast.makeText(getContext(), "Clicked a button!", Toast.LENGTH_SHORT).show();
             }
         });
-        ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
+        ViewPager pager = view.findViewById(R.id.pager);
         pager.setAdapter(new PagerAdapter());
         return view;
     }
