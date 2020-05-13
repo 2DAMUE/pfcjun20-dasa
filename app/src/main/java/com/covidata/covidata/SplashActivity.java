@@ -2,12 +2,14 @@ package com.covidata.covidata;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class Splash extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     ImageView ceImagen;
     ImageView punto1;
@@ -54,5 +56,22 @@ public class Splash extends AppCompatActivity {
         logoInferior=findViewById(R.id.logoInferior);
         Animation fadeIn = AnimationUtils.loadAnimation(this,R.anim.fadeinlogoinferior);
         logoInferior.startAnimation(fadeIn);
+
+        openApp();
+    }
+
+    private void openApp() {
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent;
+                intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 3000);
+
     }
 }
