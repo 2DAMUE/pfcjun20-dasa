@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
         handleDrawer();
 
         // Show main fragment in container
-        goToFragment(new MainFragment(), false);
+        goToFragment(new GlobalFragment(), false);
         mMenuAdapter.setViewSelected(0, true);
         setTitle(mTitles.get(0));
     }
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
                 goToFragment(new NuevoFragment(), false);
                 break;
             case 0:
-                goToFragment(new MainFragment(), false);
+                goToFragment(new GlobalFragment(), false);
                 break;
         }
 
