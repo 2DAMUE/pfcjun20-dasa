@@ -31,6 +31,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
+
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -112,9 +114,15 @@ public class GlobalFragment extends Fragment {
     public void crearGrafico(ArrayList<Integer>listaDatosGlobales){
 
         int activos = listaDatosGlobales.get(0)-(listaDatosGlobales.get(1)+listaDatosGlobales.get(2));
+        String confirmados = NumberFormat.getInstance().format(listaDatosGlobales.get(0));
+        String recuperados = NumberFormat.getInstance().format(listaDatosGlobales.get(1));
+        String fallecidos = NumberFormat.getInstance().format(listaDatosGlobales.get(2));
+        String activosString = NumberFormat.getInstance().format(activos);
+
 
         CircularGauge circularGauge = AnyChart.circular();
-        circularGauge.data(new SingleValueDataSet(new String[] { "4542347", "1637067", "307666", "2597614", "0", "6000000"}));
+        circularGauge.data(new SingleValueDataSet(new String[] { String.valueOf(listaDatosGlobales.get(0)), String.valueOf(listaDatosGlobales.get(1))
+                , String.valueOf(listaDatosGlobales.get(2)), String.valueOf(activos), "0", "6000000"}));
         circularGauge.fill("#fff")
                 .stroke(null)
                 .padding(0d, 0d, 0d, 0d)
@@ -136,7 +144,8 @@ public class GlobalFragment extends Fragment {
         xAxis.minorTicks().enabled(false);
 
         circularGauge.label(0d)
-                .text("Confirmados - <span style=\"\">"+listaDatosGlobales.get(0)+"</span>")
+                .text("Confirmados - <span style=\"\">"+confirmados +"</span>")
+                .fontSize(14)
                 .useHtml(true)
                 .hAlign(HAlign.CENTER)
                 .vAlign(VAlign.MIDDLE);
@@ -162,7 +171,8 @@ public class GlobalFragment extends Fragment {
         bar100.zIndex(4d);
 
         circularGauge.label(1d)
-                .text("Recuperados - <span style=\"\">"+listaDatosGlobales.get(2)+"</span>")
+                .text("Recuperados - <span style=\"\">"+fallecidos+"</span>")
+                .fontSize(14)
                 .useHtml(true)
                 .hAlign(HAlign.CENTER)
                 .vAlign(VAlign.MIDDLE);
@@ -188,7 +198,8 @@ public class GlobalFragment extends Fragment {
         bar101.zIndex(4d);
 
         circularGauge.label(2d)
-                .text("Fallecidos - <span style=\"\">"+listaDatosGlobales.get(1)+"</span>")
+                .text("Fallecidos - <span style=\"\">"+recuperados+"</span>")
+                .fontSize(14)
                 .useHtml(true)
                 .hAlign(HAlign.CENTER)
                 .vAlign(VAlign.MIDDLE);
@@ -214,7 +225,8 @@ public class GlobalFragment extends Fragment {
         bar102.zIndex(4d);
 
         circularGauge.label(3d)
-                .text("Activos - <span style=\"\">"+activos+"</span>")
+                .text("Activos - <span style=\"\">"+activosString+"</span>")
+                .fontSize(14)
                 .useHtml(true)
                 .hAlign(HAlign.CENTER)
                 .vAlign(VAlign.MIDDLE);
@@ -241,15 +253,7 @@ public class GlobalFragment extends Fragment {
 
 
         circularGauge.margin(50d, 50d, 50d, 50d);
-        circularGauge.title()
-                .text("Datos globales Covid-19' +\n" +
-                        "    '<br/><span style=\"color:#929292; font-size: 12px;\"></span>")
-                .useHtml(true);
-        circularGauge.title().enabled(true);
-        circularGauge.title().hAlign(HAlign.CENTER);
-        circularGauge.title()
-                .padding(0d, 0d, 0d, 0d)
-                .margin(0d, 0d, 20d, 0d);
+        circularGauge.tooltip().format("{%value}{groupsSeparator:.}");
 
         anyChartView.setChart(circularGauge);
     }

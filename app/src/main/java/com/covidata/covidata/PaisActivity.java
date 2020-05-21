@@ -54,6 +54,7 @@ public class PaisActivity extends AppCompatActivity {
         int activos = lista.get(0)-(lista.get(1)+lista.get(2));
 
         Pie pie = AnyChart.pie();
+        String colores[] = {"#80CBC4", "#AED581", "#E6EE9C", "#FFCC80"};
 
 
         List<DataEntry> data = new ArrayList<>();
@@ -66,6 +67,10 @@ public class PaisActivity extends AppCompatActivity {
 
 
         pie.labels().enabled(false);
+        pie.selected().explode("0%");
+        pie.palette(colores);
+        pie.tooltip().enabled(false);
+
 
         pie.legend()
                 .enabled(false);

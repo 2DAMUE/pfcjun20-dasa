@@ -23,14 +23,14 @@
 
     <com.anychart.AnyChartView
         android:id="@+id/grafico"
-        android:layout_width="375dp"
-        android:layout_height="341dp"
+        android:layout_width="409dp"
+        android:layout_height="627dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.673"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.781">
+        app:layout_constraintVertical_bias="1.0">
 
     </com.anychart.AnyChartView>
 
@@ -43,7 +43,7 @@
         app:layout_constraintHorizontal_bias="0.993"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957"
+        app:layout_constraintVertical_bias="1"
         app:srcCompat="@drawable/cuadradoblanco" />
 
     <ImageButton
