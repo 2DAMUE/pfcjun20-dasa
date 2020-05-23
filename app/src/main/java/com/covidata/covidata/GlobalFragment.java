@@ -18,12 +18,14 @@ import com.anychart.graphics.vector.text.VAlign;
 
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -35,6 +37,7 @@ import org.json.JSONException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -49,19 +52,33 @@ public class GlobalFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_global, container, false);
+
         anyChartView=view.findViewById(R.id.grafico);
         busqueda=view.findViewById(R.id.busqueda);
         busqueda_pais=view.findViewById(R.id.busqueda_pais);
 
+        final Map<String,String> paises = crearMapaPaises();
 
         busqueda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent;
-                String textoPais = busqueda_pais.getText().toString();
-                intent = new Intent(getActivity(), PaisActivity.class);
-                intent.putExtra("Nombre", textoPais);
-                startActivity(intent);
+                String textoPais = busqueda_pais.getText().toString().toLowerCase();
+                String iso= paises.get(textoPais);
+
+                if(iso==null){
+                    Toast toast = new Toast(getActivity().getApplicationContext());
+                    toast.setGravity(Gravity.TOP,0,100);
+                    toast.makeText(getActivity().getApplicationContext(), "Pais no encontrado", Toast.LENGTH_SHORT).show();
+                }else{
+                    intent = new Intent(getActivity(), PaisActivity.class);
+                    intent.putExtra("Nombre", textoPais);
+                    intent.putExtra("ISO", iso);
+                    startActivity(intent);
+                }
+                //comprarar
+                //si no lo encuentra sacar mensaje y no pasar al activity, si lo encuentra pasar al actvity
+
             }
         });
 
@@ -121,6 +138,9 @@ public class GlobalFragment extends Fragment {
 
 
         CircularGauge circularGauge = AnyChart.circular();
+        circularGauge.height("410px");
+        circularGauge.width("410px");
+
         circularGauge.data(new SingleValueDataSet(new String[] { String.valueOf(listaDatosGlobales.get(0)), String.valueOf(listaDatosGlobales.get(1))
                 , String.valueOf(listaDatosGlobales.get(2)), String.valueOf(activos), "0", "6000000"}));
         circularGauge.fill("#fff")
@@ -145,6 +165,8 @@ public class GlobalFragment extends Fragment {
 
         circularGauge.label(0d)
                 .text("Confirmados - <span style=\"\">"+confirmados +"</span>")
+                .fontColor("#86A6A6")
+                .fontWeight("bold")
                 .fontSize(14)
                 .useHtml(true)
                 .hAlign(HAlign.CENTER)
@@ -159,7 +181,7 @@ public class GlobalFragment extends Fragment {
         bar0.dataIndex(0d);
         bar0.radius(100d);
         bar0.width(17d);
-        bar0.fill(new SolidFill("#64b5f6", 1d));
+        bar0.fill(new SolidFill("#86A6A6", 1d));
         bar0.stroke(null);
         bar0.zIndex(5d);
         Bar bar100 = circularGauge.bar(100d);
@@ -172,6 +194,8 @@ public class GlobalFragment extends Fragment {
 
         circularGauge.label(1d)
                 .text("Recuperados - <span style=\"\">"+fallecidos+"</span>")
+                .fontColor("#354010")
+                .fontWeight("bold")
                 .fontSize(14)
                 .useHtml(true)
                 .hAlign(HAlign.CENTER)
@@ -186,7 +210,7 @@ public class GlobalFragment extends Fragment {
         bar1.dataIndex(1d);
         bar1.radius(80d);
         bar1.width(17d);
-        bar1.fill(new SolidFill("#1976d2", 1d));
+        bar1.fill(new SolidFill("#354010", 1d));
         bar1.stroke(null);
         bar1.zIndex(5d);
         Bar bar101 = circularGauge.bar(101d);
@@ -199,6 +223,8 @@ public class GlobalFragment extends Fragment {
 
         circularGauge.label(2d)
                 .text("Fallecidos - <span style=\"\">"+recuperados+"</span>")
+                .fontColor("#7E303F")
+                .fontWeight("bold")
                 .fontSize(14)
                 .useHtml(true)
                 .hAlign(HAlign.CENTER)
@@ -213,7 +239,7 @@ public class GlobalFragment extends Fragment {
         bar2.dataIndex(2d);
         bar2.radius(60d);
         bar2.width(17d);
-        bar2.fill(new SolidFill("#ef6c00", 1d));
+        bar2.fill(new SolidFill("#7E303F", 1d));
         bar2.stroke(null);
         bar2.zIndex(5d);
         Bar bar102 = circularGauge.bar(102d);
@@ -226,6 +252,8 @@ public class GlobalFragment extends Fragment {
 
         circularGauge.label(3d)
                 .text("Activos - <span style=\"\">"+activosString+"</span>")
+                .fontColor("#9B627D")
+                .fontWeight("bold")
                 .fontSize(14)
                 .useHtml(true)
                 .hAlign(HAlign.CENTER)
@@ -240,7 +268,7 @@ public class GlobalFragment extends Fragment {
         bar3.dataIndex(3d);
         bar3.radius(40d);
         bar3.width(17d);
-        bar3.fill(new SolidFill("#ffd54f", 1d));
+        bar3.fill(new SolidFill("#9B627D", 1d));
         bar3.stroke(null);
         bar3.zIndex(5d);
         Bar bar103 = circularGauge.bar(103d);
@@ -257,5 +285,21 @@ public class GlobalFragment extends Fragment {
 
         anyChartView.setChart(circularGauge);
     }
+
+
+    public static Map<String, String> crearMapaPaises(){
+        Map<String, String> paises = new HashMap<>();
+        for (String iso: Locale.getISOCountries()){
+            Locale locale = new Locale("", iso);
+            String codigoIso = locale.getISO3Country();
+            String nombre = locale.getDisplayCountry().toLowerCase();
+
+            paises.put(nombre,codigoIso);
+
+        }
+        return paises;
+    }
+
+
 
 }

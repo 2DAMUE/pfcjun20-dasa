@@ -30,9 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PaisActivity extends AppCompatActivity {
-    TextView uno;
-    TextView dos;
-    TextView tres;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +38,6 @@ public class PaisActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pais);
 
         String nombrePais = getIntent().getStringExtra("Nombre");
-
-        uno=findViewById(R.id.uno);
-        dos=findViewById(R.id.dos);
-        tres=findViewById(R.id.tres);
 
         hacerPeticion();
 
@@ -92,9 +86,7 @@ public class PaisActivity extends AppCompatActivity {
 
                         try {
                             ArrayList<Integer> lista=p.parsearJSONFechaPais(response);//Este response es el String JSON que le pasamos al metodo
-                            uno.setText(lista.get(0).toString());
-                            dos.setText(lista.get(1).toString());
-                            tres.setText(lista.get(2).toString());
+
 
                             crearGrafico(lista);
                         } catch (JSONException e) {
