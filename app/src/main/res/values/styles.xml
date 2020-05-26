@@ -9,6 +9,7 @@
     </style>
 
     <style name="temaSplash" parent="AppTheme.NoActionBar">
+        <item name="android:fontFamily">@font/montserratregular</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">true</item>
@@ -18,8 +19,17 @@
     </style>
 
     <style name="AppTheme.NoActionBar">
+        <item name="android:fontFamily">@font/montserratregular</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/Bordeaux</item>
+        <item name="colorPrimaryDark">@color/Bordeaux</item>
+        <item name="colorAccent">@color/Bordeaux</item>
+        <item name="android:navigationBarColor">@color/Bordeaux</item>
+    </style>
+
+    <style name="temaPais" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:fontFamily">@font/montserratregular</item>
         <item name="colorPrimary">@color/Bordeaux</item>
         <item name="colorPrimaryDark">@color/Bordeaux</item>
         <item name="colorAccent">@color/Bordeaux</item>

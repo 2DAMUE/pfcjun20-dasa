@@ -40,14 +40,10 @@ class ParseoJSON {
         return listaDatosGlobales;
     }
 
-    public ArrayList<Integer> parsearJSONFechaPais(String JSON)throws JSONException {
+
+    public ArrayList<Integer> parsearJSONFechaPais(String JSON, String fecha)throws JSONException {
 
         ArrayList<Integer>listaDatosGlobales = new ArrayList<>();
-        Calendar fecha = Calendar.getInstance();
-        DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        fecha.add(Calendar.DATE,-1);
-        Date ayer = fecha.getTime();
-        String fechaAyer = formato.format(ayer).toString();
 
 
         JSONObject objeto_total = new JSONObject(JSON);
@@ -55,7 +51,7 @@ class ParseoJSON {
         try{
 
             JSONObject result = objeto_total.getJSONObject("result");
-            JSONObject objetoFecha = result.getJSONObject(fechaAyer);
+            JSONObject objetoFecha = result.getJSONObject(fecha);
             int confirmed = objetoFecha.getInt("confirmed");
             int deaths = objetoFecha.getInt("deaths");
             int recovered = objetoFecha.getInt("recovered");

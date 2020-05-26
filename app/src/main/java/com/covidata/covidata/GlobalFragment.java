@@ -34,6 +34,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 
+import java.text.Normalizer;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,10 +49,11 @@ public class GlobalFragment extends Fragment {
     AnyChartView anyChartView;
     ImageButton busqueda;
     EditText busqueda_pais;
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_global, container, false);
+        view = inflater.inflate(R.layout.fragment_global, container, false);
 
         anyChartView=view.findViewById(R.id.grafico);
         busqueda=view.findViewById(R.id.busqueda);
@@ -62,9 +64,11 @@ public class GlobalFragment extends Fragment {
         busqueda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent;
                 String textoPais = busqueda_pais.getText().toString().toLowerCase();
-                String iso= paises.get(textoPais);
+                String paisSinAcentos = limpiarAcentos(textoPais);
+                String iso= paises.get(paisSinAcentos);
 
                 if(iso==null){
                     Toast toast = new Toast(getActivity().getApplicationContext());
@@ -72,12 +76,10 @@ public class GlobalFragment extends Fragment {
                     toast.makeText(getActivity().getApplicationContext(), "Pais no encontrado", Toast.LENGTH_SHORT).show();
                 }else{
                     intent = new Intent(getActivity(), PaisActivity.class);
-                    intent.putExtra("Nombre", textoPais);
+                    intent.putExtra("Nombre", paisSinAcentos);
                     intent.putExtra("ISO", iso);
                     startActivity(intent);
                 }
-                //comprarar
-                //si no lo encuentra sacar mensaje y no pasar al activity, si lo encuentra pasar al actvity
 
             }
         });
@@ -88,7 +90,7 @@ public class GlobalFragment extends Fragment {
     }
 
 
-    private void hacerPeticion() {//copio todo porque es la peticion para recoger los datos
+    private void hacerPeticion() {
 
         String url = "https://covidapi.info/api/v1/global";
 
@@ -130,12 +132,13 @@ public class GlobalFragment extends Fragment {
 
     public void crearGrafico(ArrayList<Integer>listaDatosGlobales){
 
+        anyChartView.setProgressBar(view.findViewById(R.id.progress_bar));
+
         int activos = listaDatosGlobales.get(0)-(listaDatosGlobales.get(1)+listaDatosGlobales.get(2));
         String confirmados = NumberFormat.getInstance().format(listaDatosGlobales.get(0));
-        String recuperados = NumberFormat.getInstance().format(listaDatosGlobales.get(1));
-        String fallecidos = NumberFormat.getInstance().format(listaDatosGlobales.get(2));
+        String fallecidos = NumberFormat.getInstance().format(listaDatosGlobales.get(1));
+        String recuperados = NumberFormat.getInstance().format(listaDatosGlobales.get(2));
         String activosString = NumberFormat.getInstance().format(activos);
-
 
         CircularGauge circularGauge = AnyChart.circular();
         circularGauge.height("410px");
@@ -193,8 +196,8 @@ public class GlobalFragment extends Fragment {
         bar100.zIndex(4d);
 
         circularGauge.label(1d)
-                .text("Recuperados - <span style=\"\">"+fallecidos+"</span>")
-                .fontColor("#354010")
+                .text("Fallecidos - <span style=\"\">"+fallecidos+"</span>")
+                .fontColor("#7E303F")
                 .fontWeight("bold")
                 .fontSize(14)
                 .useHtml(true)
@@ -210,7 +213,7 @@ public class GlobalFragment extends Fragment {
         bar1.dataIndex(1d);
         bar1.radius(80d);
         bar1.width(17d);
-        bar1.fill(new SolidFill("#354010", 1d));
+        bar1.fill(new SolidFill("#7E303F", 1d));
         bar1.stroke(null);
         bar1.zIndex(5d);
         Bar bar101 = circularGauge.bar(101d);
@@ -222,8 +225,8 @@ public class GlobalFragment extends Fragment {
         bar101.zIndex(4d);
 
         circularGauge.label(2d)
-                .text("Fallecidos - <span style=\"\">"+recuperados+"</span>")
-                .fontColor("#7E303F")
+                .text("Recuperados - <span style=\"\">"+recuperados+"</span>")
+                .fontColor("#354010")
                 .fontWeight("bold")
                 .fontSize(14)
                 .useHtml(true)
@@ -239,7 +242,7 @@ public class GlobalFragment extends Fragment {
         bar2.dataIndex(2d);
         bar2.radius(60d);
         bar2.width(17d);
-        bar2.fill(new SolidFill("#7E303F", 1d));
+        bar2.fill(new SolidFill("#354010", 1d));
         bar2.stroke(null);
         bar2.zIndex(5d);
         Bar bar102 = circularGauge.bar(102d);
@@ -293,11 +296,18 @@ public class GlobalFragment extends Fragment {
             Locale locale = new Locale("", iso);
             String codigoIso = locale.getISO3Country();
             String nombre = locale.getDisplayCountry().toLowerCase();
+            String nombreSinAcento = limpiarAcentos(nombre);
 
-            paises.put(nombre,codigoIso);
+            paises.put(nombreSinAcento,codigoIso);
 
         }
         return paises;
+    }
+
+    public static String limpiarAcentos(String cadena){
+        String cadenaNormalize = Normalizer.normalize(cadena, Normalizer.Form.NFD);
+        String cadenaSinAcentos = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+        return cadenaSinAcentos;
     }
 
 

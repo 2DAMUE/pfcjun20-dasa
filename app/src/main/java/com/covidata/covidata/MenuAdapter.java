@@ -74,13 +74,13 @@ class MenuAdapter extends BaseAdapter {
         }else if(position==1){
             icono = contexto.getDrawable(R.drawable.ic_country);
         }else if(position==2){
-            icono = contexto.getDrawable(R.drawable.ic_nation);
+            icono = contexto.getDrawable(R.drawable.ic_ccaa);
         }else if(position==3){
             icono = contexto.getDrawable(R.drawable.ic_foldednewspaper);
         }else if(position==4){
             icono = contexto.getDrawable(R.drawable.ic_healthcare_and_medical);
         }else if(position==5){
-            icono = contexto.getDrawable(R.drawable.ic_hand);
+            icono = contexto.getDrawable(R.drawable.ic_communications);
         }else if(position==6){
             icono = contexto.getDrawable(R.drawable.ic_computer);
         }
