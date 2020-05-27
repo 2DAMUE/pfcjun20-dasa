@@ -43,8 +43,6 @@ class ParseoJSON {
     public ArrayList<Integer> parsearJSONFechaPais(String JSON, String fecha)throws JSONException {
 
         ArrayList<Integer>listaDatosGlobales = new ArrayList<>();
-
-
         JSONObject objeto_total = new JSONObject(JSON);
 
         try{
@@ -54,7 +52,6 @@ class ParseoJSON {
             int confirmed = objetoFecha.getInt("confirmed");
             int deaths = objetoFecha.getInt("deaths");
             int recovered = objetoFecha.getInt("recovered");
-
 
             listaDatosGlobales.add(confirmed);
             listaDatosGlobales.add(deaths);

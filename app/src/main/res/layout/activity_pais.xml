@@ -10,8 +10,7 @@
     <com.anychart.AnyChartView
         android:id="@+id/graficoPais"
         android:layout_width="match_parent"
-        android:layout_marginBottom="200dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginBottom="280dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,8 +22,7 @@
 
     <ImageView
         android:id="@+id/imagen_pais"
-        android:layout_marginBottom="200dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginBottom="280dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,12 +33,39 @@
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="400px"
+        android:layout_marginBottom="700px"
         android:indeterminateTint="@color/Bordeaux"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="451dp"
+        app:layout_constraintTop_toBottomOf="@+id/graficoPais">
+
+        <TextView
+            android:id="@+id/tvConfirmados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvFallecidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvRecuperados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -88,9 +88,9 @@ public class GlobalFragment extends Fragment {
                 String iso= paises.get(paisSinAcentos);
 
                 if(iso==null){
-                    Toast toast = new Toast(getActivity().getApplicationContext());
-                    toast.setGravity(Gravity.TOP,0,100);
-                    toast.makeText(getActivity().getApplicationContext(), "Pais no encontrado", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Pais no encontrado", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                    toast.show();
                 }else{
                     intent = new Intent(getActivity(), PaisActivity.class);
                     intent.putExtra("Nombre", paisSinAcentos);
@@ -188,10 +188,10 @@ public class GlobalFragment extends Fragment {
                             String fecha = datoGlobal.getFecha();
 
                             cajaFechaAyer.setText(fecha);
-                            cajaConfirmadosAyer.setText(Integer.toString(confirmados));
-                            cajaFallecidosAyer.setText(Integer.toString(fallecidos));
-                            cajaRecuperadosAyer.setText(Integer.toString(recuperados));
-                            cajaActivosAyer.setText(Integer.toString(activos));
+                            cajaConfirmadosAyer.setText(NumberFormat.getInstance().format(confirmados));
+                            cajaFallecidosAyer.setText(NumberFormat.getInstance().format(fallecidos));
+                            cajaRecuperadosAyer.setText(NumberFormat.getInstance().format(recuperados));
+                            cajaActivosAyer.setText(NumberFormat.getInstance().format(activos));
 
                             int calculoConfirmados=datoGlobalHoy.getConfirmados()-confirmados;
                             int calculoFallecidos=datoGlobalHoy.getFallecidos()-fallecidos;
@@ -199,10 +199,10 @@ public class GlobalFragment extends Fragment {
                             int calculoActivos=((datoGlobalHoy.getConfirmados()-(datoGlobalHoy.getFallecidos()+datoGlobalHoy.getRecuperados()))-activos);
 
 
-                            cajaConfirmadosHoy.setText("+ "+Integer.toString(calculoConfirmados));
-                            cajaFallecidosHoy.setText("+ "+Integer.toString(calculoFallecidos));
-                            cajaRecuperadosHoy.setText("+ "+Integer.toString(calculoRecuerados));
-                            cajaActivosHoy.setText("+ "+Integer.toString(calculoActivos));
+                            cajaConfirmadosHoy.setText("+ "+NumberFormat.getInstance().format(calculoConfirmados));
+                            cajaFallecidosHoy.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
+                            cajaRecuperadosHoy.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
+                            cajaActivosHoy.setText("+ "+NumberFormat.getInstance().format(calculoActivos));
 
 
                         } catch (JSONException e) {

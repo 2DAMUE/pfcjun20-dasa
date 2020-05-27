@@ -26,6 +26,7 @@ import com.anychart.enums.LegendLayout;
 
 import org.json.JSONException;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,11 +40,16 @@ public class PaisActivity extends AppCompatActivity {
     ImageView imagen_pais;
     String nombreConTodo;
     ActionBar actionBar;
+    TextView tvConfirmados,tvFallecidos,tvRecuperados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pais);
+
+        tvConfirmados= findViewById(R.id.tvConfirmados);
+        tvFallecidos=findViewById(R.id.tvFallecidos);
+        tvRecuperados=findViewById(R.id.tvRecuperados);
 
         nombrePais = getIntent().getStringExtra("Nombre");
         iso = getIntent().getStringExtra("ISO");
@@ -72,17 +78,14 @@ public class PaisActivity extends AppCompatActivity {
 
         anyChartView.setProgressBar(findViewById(R.id.progress_bar));
 
-        int activos = lista.get(0)-(lista.get(1)+lista.get(2));
-
         Pie pie = AnyChart.pie();
-        String colores[] = {"#86A6A6", "#7E303F", "#354010", "#9B627D"};
+        String colores[] = {"#86A6A6", "#7E303F", "#354010"};
 
 
         List<DataEntry> data = new ArrayList<>();
         data.add(new ValueDataEntry("Confirmados", lista.get(0)));
         data.add(new ValueDataEntry("Fallecidos", lista.get(1)));
         data.add(new ValueDataEntry("Recuperados", lista.get(2)));
-        data.add(new ValueDataEntry("Activos", activos));
 
         pie.data(data);
 
@@ -112,6 +115,12 @@ public class PaisActivity extends AppCompatActivity {
 
                         try {
                             ArrayList<Integer> lista=p.parsearJSONFechaPais(response,fecha);
+                            int confirmados = lista.get(0);
+                            int fallecidos = lista.get(1);
+                            int recuperados = lista.get(2);
+                            tvConfirmados.setText(NumberFormat.getInstance().format(confirmados));
+                            tvFallecidos.setText(NumberFormat.getInstance().format(fallecidos));
+                            tvRecuperados.setText(NumberFormat.getInstance().format(recuperados));
                             crearGrafico(lista);
 
                         } catch (JSONException e) {

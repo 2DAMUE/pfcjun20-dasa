@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
 
     @Override
     public void onFooterClicked() {
-        Toast.makeText(this, "onFooterClicked", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onFooterClicked", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onHeaderClicked() {
-        Toast.makeText(this, "onHeaderClicked", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onHeaderClicked", Toast.LENGTH_SHORT).show();
     }
 
     private void goToFragment(Fragment fragment, boolean addToBackStack) {
@@ -100,11 +100,23 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
 
         // Navigate to the right fragment
         switch (position) {
+            case 0:
+                goToFragment(new GlobalFragment(), false);
+                break;
             case 1:
                 goToFragment(new NuevoFragment(), false);
                 break;
-            case 0:
-                goToFragment(new GlobalFragment(), false);
+            case 2:
+                goToFragment(new NuevoFragment(), false);
+                break;
+            case 3:
+                goToFragment(new NuevoFragment(), false);
+                break;
+            case 4:
+                goToFragment(new NuevoFragment(), false);
+                break;
+            case 5:
+                goToFragment(new NuevoFragment(), false);
                 break;
         }
 
