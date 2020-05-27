@@ -76,8 +76,6 @@ class ParseoJSON {
 
             JSONObject translations = objeto_total.getJSONObject("translations");
             nombre = translations.getString("es");
-            Log.e("esst",nombre);
-
 
 
         }catch (JSONException e){

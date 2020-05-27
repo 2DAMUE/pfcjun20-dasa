@@ -48,6 +48,7 @@ public class PaisActivity extends AppCompatActivity {
         nombrePais = getIntent().getStringExtra("Nombre");
         iso = getIntent().getStringExtra("ISO");
         actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         imagen_pais=findViewById(R.id.imagen_pais);
         Map<String, Integer> mapaPaises = listaPaises();
@@ -203,7 +204,7 @@ public class PaisActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders(){
                 Map<String, String>  params = new HashMap<>();
-                params.put("Accept","application/xml");
+                params.put("Accept","application/json");
                 return params;
             }
 
