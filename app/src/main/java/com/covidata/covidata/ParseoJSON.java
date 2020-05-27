@@ -15,29 +15,28 @@ import java.util.Date;
 class ParseoJSON {
 
 
-    public ArrayList<Integer> parsearJSON(String JSON)throws JSONException {
-
-        ArrayList<Integer>listaDatosGlobales = new ArrayList<>();
+    public DatoGlobal parsearJSON(String JSON)throws JSONException {
 
         JSONObject objeto_total = new JSONObject(JSON);
+        DatoGlobal datoglobal=null;
 
             try{
 
                 JSONObject result = objeto_total.getJSONObject("result");
+                String date = objeto_total.getString("date");
                 int confirmed = result.getInt("confirmed");
                 int deaths = result.getInt("deaths");
                 int recovered = result.getInt("recovered");
+                Log.e("recuperados", ""+recovered);
 
+                datoglobal = new DatoGlobal(date, confirmed, deaths, recovered);
 
-                listaDatosGlobales.add(confirmed);
-                listaDatosGlobales.add(deaths);
-                listaDatosGlobales.add(recovered);
 
             }catch (JSONException e){
                 Log.d("location","error en el elemento: "+e.getLocalizedMessage());
             }
 
-        return listaDatosGlobales;
+        return datoglobal;
     }
 
 
@@ -67,4 +66,25 @@ class ParseoJSON {
 
         return listaDatosGlobales;
     }
+
+    public String parsearJSONNombre(String JSON)throws JSONException {
+
+        JSONObject objeto_total = new JSONObject(JSON);
+        String nombre="";
+
+        try{
+
+            JSONObject translations = objeto_total.getJSONObject("translations");
+            nombre = translations.getString("es");
+            Log.e("esst",nombre);
+
+
+
+        }catch (JSONException e){
+            Log.d("location","error en el elemento: "+e.getLocalizedMessage());
+        }
+
+        return nombre;
+    }
+
 }

@@ -34,9 +34,14 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 
+import java.text.DateFormat;
 import java.text.Normalizer;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -50,6 +55,8 @@ public class GlobalFragment extends Fragment {
     ImageButton busqueda;
     EditText busqueda_pais;
     View view;
+    TextView cajaConfirmadosHoy, cajaConfirmadosAyer, cajaFallecidosHoy, cajaFallecidosAyer, cajaRecuperadosHoy, cajaRecuperadosAyer,
+    cajaActivosHoy, cajaActivosAyer, cajaFechaAyer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +65,16 @@ public class GlobalFragment extends Fragment {
         anyChartView=view.findViewById(R.id.grafico);
         busqueda=view.findViewById(R.id.busqueda);
         busqueda_pais=view.findViewById(R.id.busqueda_pais);
+
+        cajaConfirmadosHoy=view.findViewById(R.id.confirmadosHoy);
+        cajaConfirmadosAyer=view.findViewById(R.id.confirmadosAyer);
+        cajaFallecidosHoy=view.findViewById(R.id.fallecidosHoy);
+        cajaFallecidosAyer=view.findViewById(R.id.fallecidosAyer);
+        cajaRecuperadosHoy=view.findViewById(R.id.recuperadosHoy);
+        cajaRecuperadosAyer=view.findViewById(R.id.recuperadosAyer);
+        cajaActivosHoy=view.findViewById(R.id.activosHoy);
+        cajaActivosAyer=view.findViewById(R.id.activosAyer);
+        cajaFechaAyer=view.findViewById(R.id.fecha);
 
         final Map<String,String> paises = crearMapaPaises();
 
@@ -103,8 +120,27 @@ public class GlobalFragment extends Fragment {
                         Log.d("Response", response);
 
                         try {
-                            ArrayList<Integer> lista=p.parsearJSON(response);//Este response es el String JSON que le pasamos al metodo
-                            crearGrafico(lista);
+                            DatoGlobal datoGlobal =p.parsearJSON(response);//Este response es el String JSON que le pasamos al metodo
+                            crearGrafico(datoGlobal);
+                            String fechaActual = datoGlobal.getFecha();
+                            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                            Date date=null;
+
+                            try {
+                                date = formatter.parse(fechaActual);
+                            }catch (ParseException e ){
+                                e.printStackTrace();
+                            }
+
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.setTime(date);
+
+                            calendar.add(Calendar.DAY_OF_YEAR, -1);
+                            Date diaAnterior=calendar.getTime();
+                            DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                            String diaAnteriorString = formato.format(diaAnterior);
+                            hacerPeticionDiaAnterior(diaAnteriorString, datoGlobal);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -130,22 +166,87 @@ public class GlobalFragment extends Fragment {
         Volley.newRequestQueue(getActivity().getApplicationContext()).add(postRequest);
     }
 
-    public void crearGrafico(ArrayList<Integer>listaDatosGlobales){
+
+    private void hacerPeticionDiaAnterior(String fecha, final DatoGlobal datoGlobalHoy) {
+
+        String url = "https://covidapi.info/api/v1/global/"+fecha;
+
+        StringRequest postRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // por aquí recibo el XML o JSON
+                        ParseoJSON p=new ParseoJSON();
+                        Log.d("Response", response);
+
+                        try {
+                            DatoGlobal datoGlobal =p.parsearJSON(response);//Este response es el String JSON que le pasamos al metodo
+                            int confirmados = datoGlobal.getConfirmados();
+                            int fallecidos = datoGlobal.getFallecidos();
+                            int recuperados = datoGlobal.getRecuperados();
+                            int activos = (confirmados-(fallecidos+recuperados));
+                            String fecha = datoGlobal.getFecha();
+
+                            cajaFechaAyer.setText(fecha);
+                            cajaConfirmadosAyer.setText(Integer.toString(confirmados));
+                            cajaFallecidosAyer.setText(Integer.toString(fallecidos));
+                            cajaRecuperadosAyer.setText(Integer.toString(recuperados));
+                            cajaActivosAyer.setText(Integer.toString(activos));
+
+                            int calculoConfirmados=datoGlobalHoy.getConfirmados()-confirmados;
+                            int calculoFallecidos=datoGlobalHoy.getFallecidos()-fallecidos;
+                            int calculoRecuerados=datoGlobalHoy.getRecuperados()-recuperados;
+                            int calculoActivos=((datoGlobalHoy.getConfirmados()-(datoGlobalHoy.getFallecidos()+datoGlobalHoy.getRecuperados()))-activos);
+
+
+                            cajaConfirmadosHoy.setText("+ "+Integer.toString(calculoConfirmados));
+                            cajaFallecidosHoy.setText("+ "+Integer.toString(calculoFallecidos));
+                            cajaRecuperadosHoy.setText("+ "+Integer.toString(calculoRecuerados));
+                            cajaActivosHoy.setText("+ "+Integer.toString(calculoActivos));
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", error.toString());
+                    }
+                }
+        ) {
+
+            @Override
+            public Map<String, String> getHeaders(){
+                Map<String, String>  params = new HashMap<>();
+                params.put("Accept","application/xml");
+                return params;
+            }
+
+        };
+        Volley.newRequestQueue(getActivity().getApplicationContext()).add(postRequest);
+    }
+
+
+    public void crearGrafico(DatoGlobal datoGlobal){
 
         anyChartView.setProgressBar(view.findViewById(R.id.progress_bar));
 
-        int activos = listaDatosGlobales.get(0)-(listaDatosGlobales.get(1)+listaDatosGlobales.get(2));
-        String confirmados = NumberFormat.getInstance().format(listaDatosGlobales.get(0));
-        String fallecidos = NumberFormat.getInstance().format(listaDatosGlobales.get(1));
-        String recuperados = NumberFormat.getInstance().format(listaDatosGlobales.get(2));
+        int activos = datoGlobal.getConfirmados()-(datoGlobal.getFallecidos()+datoGlobal.getRecuperados());
+        String confirmados = NumberFormat.getInstance().format(datoGlobal.getConfirmados());
+        String fallecidos = NumberFormat.getInstance().format(datoGlobal.getFallecidos());
+        String recuperados = NumberFormat.getInstance().format(datoGlobal.getRecuperados());
         String activosString = NumberFormat.getInstance().format(activos);
 
         CircularGauge circularGauge = AnyChart.circular();
         circularGauge.height("410px");
         circularGauge.width("410px");
 
-        circularGauge.data(new SingleValueDataSet(new String[] { String.valueOf(listaDatosGlobales.get(0)), String.valueOf(listaDatosGlobales.get(1))
-                , String.valueOf(listaDatosGlobales.get(2)), String.valueOf(activos), "0", "6000000"}));
+        circularGauge.data(new SingleValueDataSet(new String[] { String.valueOf(datoGlobal.getConfirmados()), String.valueOf(datoGlobal.getFallecidos())
+                , String.valueOf(datoGlobal.getRecuperados()), String.valueOf(activos), "0", String.valueOf(datoGlobal.getConfirmados())}));
         circularGauge.fill("#fff")
                 .stroke(null)
                 .padding(0d, 0d, 0d, 0d)

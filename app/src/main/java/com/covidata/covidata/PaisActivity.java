@@ -1,5 +1,6 @@
 package com.covidata.covidata;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -36,6 +37,8 @@ public class PaisActivity extends AppCompatActivity {
     String nombrePais;
     String iso;
     ImageView imagen_pais;
+    String nombreConTodo;
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class PaisActivity extends AppCompatActivity {
 
         nombrePais = getIntent().getStringExtra("Nombre");
         iso = getIntent().getStringExtra("ISO");
+        actionBar = getSupportActionBar();
+
         imagen_pais=findViewById(R.id.imagen_pais);
         Map<String, Integer> mapaPaises = listaPaises();
 
@@ -55,7 +60,7 @@ public class PaisActivity extends AppCompatActivity {
             imagen_pais.setImageResource(imagen);
         }
 
-
+        hacerPeticionNombre(iso);
         hacerPeticionFecha();
 
     }
@@ -166,13 +171,53 @@ public class PaisActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(postRequest);
     }
 
+    private void hacerPeticionNombre(String iso) {
+
+        String url = "https://restcountries.eu/rest/v2/alpha/"+iso.toLowerCase();
+
+        StringRequest postRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        ParseoJSON p=new ParseoJSON();
+                        Log.d("Response", response);
+
+                        try {
+                            nombreConTodo=p.parsearJSONNombre(response);
+                            actionBar.setTitle(nombreConTodo);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", error.toString());
+                    }
+                }
+        ) {
+
+            @Override
+            public Map<String, String> getHeaders(){
+                Map<String, String>  params = new HashMap<>();
+                params.put("Accept","application/xml");
+                return params;
+            }
+
+        };
+        Volley.newRequestQueue(this).add(postRequest);
+    }
+
     private static Map<String,Integer> listaPaises(){
         Map<String, Integer> paises = new HashMap<>();
 
         paises.put("alemania",R.drawable.alemania);
         paises.put("arabia saudi",R.drawable.arabia);
         paises.put("argelia",R.drawable.argelia);
-        paises.put("australia",R.drawable.auustralia);
+        paises.put("australia",R.drawable.australia);
         paises.put("canada",R.drawable.canada);
         paises.put("china",R.drawable.china);
         paises.put("colombia",R.drawable.colombia);
