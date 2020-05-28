@@ -104,13 +104,13 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
                 goToFragment(new GlobalFragment(), false);
                 break;
             case 1:
-                goToFragment(new NuevoFragment(), false);
+                goToFragment(new SpainFragment(), false);
                 break;
             case 2:
-                goToFragment(new NuevoFragment(), false);
+                goToFragment(new ComunidadAutonomaFragment(), false);
                 break;
             case 3:
-                goToFragment(new NuevoFragment(), false);
+                goToFragment(new ArticulosFragment(), false);
                 break;
             case 4:
                 goToFragment(new NuevoFragment(), false);
