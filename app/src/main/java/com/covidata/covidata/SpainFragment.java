@@ -34,10 +34,18 @@ public class SpainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_spain, container, false);
 
+        //Obtengo la fecha actual
+        Date objDate = new Date();
+        System.out.println(objDate);
+        String strDateFormat = "yyyy-MM-dd";
+        SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
+        String fecha=objSDF.format(objDate);
+
+
         return view;
     }
 
-    private void hacerPeticion() {
+    private void hacerPeticion(String fecha) {
 
         String url = "";
 

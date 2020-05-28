@@ -82,4 +82,6 @@ class ParseoJSON {
         return nombre;
     }
 
+
+
 }
