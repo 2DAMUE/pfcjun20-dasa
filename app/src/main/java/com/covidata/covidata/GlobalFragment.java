@@ -251,6 +251,9 @@ public class GlobalFragment extends Fragment {
         String recuperados = NumberFormat.getInstance().format(datoGlobal.getRecuperados());
         String activosString = NumberFormat.getInstance().format(activos);
 
+
+        anyChartView.addFont("Montserrat", "file:///android_asset/montserratregular.ttf");
+
         CircularGauge circularGauge = AnyChart.circular();
         circularGauge.height("410px");
         circularGauge.width("410px");
@@ -281,14 +284,16 @@ public class GlobalFragment extends Fragment {
                 .text("Confirmados - <span style=\"\">"+confirmados +"</span>")
                 .fontColor("#BF8A26")
                 .fontWeight("bold")
-                .fontSize(14)
+                .fontFamily("Montserrat")
+                .fontSize(12)
                 .useHtml(true)
-                .hAlign(HAlign.CENTER)
+                .hAlign(HAlign.END)
                 .vAlign(VAlign.MIDDLE);
         circularGauge.label(0d)
                 .anchor(Anchor.RIGHT_CENTER)
                 .padding(0d, 10d, 0d, 0d)
                 .height(17d / 2d + "%")
+                .width(160d)
                 .offsetY(100d + "%")
                 .offsetX(0d);
         Bar bar0 = circularGauge.bar(0d);
@@ -310,14 +315,16 @@ public class GlobalFragment extends Fragment {
                 .text("Fallecidos - <span style=\"\">"+fallecidos+"</span>")
                 .fontColor("#591E3A")
                 .fontWeight("bold")
-                .fontSize(14)
+                .fontFamily("Montserrat")
+                .fontSize(12)
                 .useHtml(true)
-                .hAlign(HAlign.CENTER)
+                .hAlign(HAlign.END)
                 .vAlign(VAlign.MIDDLE);
         circularGauge.label(1d)
                 .anchor(Anchor.RIGHT_CENTER)
                 .padding(0d, 10d, 0d, 0d)
                 .height(17d / 2d + "%")
+                .width(160d)
                 .offsetY(80d + "%")
                 .offsetX(0d);
         Bar bar1 = circularGauge.bar(1d);
@@ -339,14 +346,16 @@ public class GlobalFragment extends Fragment {
                 .text("Recuperados - <span style=\"\">"+recuperados+"</span>")
                 .fontColor("#30728C")
                 .fontWeight("bold")
-                .fontSize(14)
+                .fontFamily("Montserrat")
+                .fontSize(12)
                 .useHtml(true)
-                .hAlign(HAlign.CENTER)
+                .hAlign(HAlign.END)
                 .vAlign(VAlign.MIDDLE);
         circularGauge.label(2d)
                 .anchor(Anchor.RIGHT_CENTER)
                 .padding(0d, 10d, 0d, 0d)
                 .height(17d / 2d + "%")
+                .width(160d)
                 .offsetY(60d + "%")
                 .offsetX(0d);
         Bar bar2 = circularGauge.bar(2d);
@@ -368,14 +377,16 @@ public class GlobalFragment extends Fragment {
                 .text("Activos - <span style=\"\">"+activosString+"</span>")
                 .fontColor("#6E6E6E")
                 .fontWeight("bold")
-                .fontSize(14)
+                .fontFamily("Montserrat")
+                .fontSize(12)
                 .useHtml(true)
-                .hAlign(HAlign.CENTER)
+                .hAlign(HAlign.END)
                 .vAlign(VAlign.MIDDLE);
         circularGauge.label(3d)
                 .anchor(Anchor.RIGHT_CENTER)
                 .padding(0d, 10d, 0d, 0d)
                 .height(17d / 2d + "%")
+                .width(160d)
                 .offsetY(40d + "%")
                 .offsetX(0d);
         Bar bar3 = circularGauge.bar(3d);
@@ -395,7 +406,7 @@ public class GlobalFragment extends Fragment {
 
 
         circularGauge.margin(50d, 50d, 50d, 50d);
-        circularGauge.tooltip().format("{%value}{groupsSeparator:.}");
+        circularGauge.tooltip().fontFamily("Montserrat").format("{%value}{groupsSeparator:.}");
 
         anyChartView.setChart(circularGauge);
     }
