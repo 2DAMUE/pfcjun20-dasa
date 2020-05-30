@@ -92,11 +92,21 @@ public class GlobalFragment extends Fragment {
                     toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
                     toast.show();
                 }else{
-                    intent = new Intent(getActivity(), PaisActivity.class);
-                    intent.putExtra("Nombre", paisSinAcentos);
-                    intent.putExtra("ISO", iso);
-                    startActivity(intent);
+                    if(textoPais.equals("españa")){
+                        Intent intent2 = new Intent(getActivity(),MainActivity.class);
+                        intent2.putExtra("dato", "1");
+                        startActivity(intent2);
+
+                    }else{
+                        intent = new Intent(getActivity(), PaisActivity.class);
+                        intent.putExtra("Nombre", paisSinAcentos);
+                        intent.putExtra("ISO", iso);
+                        startActivity(intent);
+                    }
+
                 }
+
+
 
             }
         });

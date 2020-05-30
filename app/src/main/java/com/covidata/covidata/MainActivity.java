@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
 
     private MenuAdapter mMenuAdapter;
     private ViewHolder mViewHolder;
+    String dato;
 
     private ArrayList<String> mTitles = new ArrayList<>();
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dato = getIntent().getStringExtra("dato");
         mTitles = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.menuOptions)));
 
         // Initialize the views
@@ -39,10 +42,21 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
         // Handle drawer actions
         handleDrawer();
 
-        // Show main fragment in container
-        goToFragment(new GlobalFragment(), false);
-        mMenuAdapter.setViewSelected(0, true);
-        setTitle(mTitles.get(0));
+
+        int datoInt=0;
+        if(dato!=null){
+            datoInt = Integer.parseInt(dato);
+        }
+
+        if(datoInt!=1){
+            mMenuAdapter.setViewSelected(0, true);
+            goToFragment(new GlobalFragment(), false);
+            setTitle(mTitles.get(0));
+        }else{
+            mMenuAdapter.setViewSelected(1, true);
+            goToFragment(new SpainFragment(), false);
+            setTitle(mTitles.get(1));
+        }
     }
 
     private void handleToolbar() {

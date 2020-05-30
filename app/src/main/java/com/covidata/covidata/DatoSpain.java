@@ -1,6 +1,6 @@
 package com.covidata.covidata;
 
-public class DatoSpain {
+public class DatoSpain implements java.io.Serializable{
 
     String fecha;
     String confirmados;

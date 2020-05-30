@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PaisActivity"
+        <activity android:name=".GraficoSpainActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/temaPais">
-        </activity>
+            android:theme="@style/temaPais"></activity>
+        <activity
+            android:name=".PaisActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/temaPais"></activity>
         <activity
             android:name=".SplashActivity"
             android:theme="@style/temaSplash">
