@@ -9,4 +9,9 @@
     <color name="TonysPink">#F29F80</color>
     <color name="White">#FFFFFF</color>
     <color name="Grey">#606060</color>
+    <color name="morado">#591E3A</color>
+    <color name="Azul">#30728C</color>
+    <color name="AmarilloDorado">#BF8A26</color>
+    <color name="GrisOscuro">#6E6E6E</color>
+    <color name="negro">#000000</color>
 </resources>

@@ -269,7 +269,7 @@ public class GlobalFragment extends Fragment {
 
         circularGauge.label(0d)
                 .text("Confirmados - <span style=\"\">"+confirmados +"</span>")
-                .fontColor("#86A6A6")
+                .fontColor("#BF8A26")
                 .fontWeight("bold")
                 .fontSize(14)
                 .useHtml(true)
@@ -285,7 +285,7 @@ public class GlobalFragment extends Fragment {
         bar0.dataIndex(0d);
         bar0.radius(100d);
         bar0.width(17d);
-        bar0.fill(new SolidFill("#86A6A6", 1d));
+        bar0.fill(new SolidFill("#BF8A26", 1d));
         bar0.stroke(null);
         bar0.zIndex(5d);
         Bar bar100 = circularGauge.bar(100d);
@@ -298,7 +298,7 @@ public class GlobalFragment extends Fragment {
 
         circularGauge.label(1d)
                 .text("Fallecidos - <span style=\"\">"+fallecidos+"</span>")
-                .fontColor("#7E303F")
+                .fontColor("#591E3A")
                 .fontWeight("bold")
                 .fontSize(14)
                 .useHtml(true)
@@ -314,7 +314,7 @@ public class GlobalFragment extends Fragment {
         bar1.dataIndex(1d);
         bar1.radius(80d);
         bar1.width(17d);
-        bar1.fill(new SolidFill("#7E303F", 1d));
+        bar1.fill(new SolidFill("#591E3A", 1d));
         bar1.stroke(null);
         bar1.zIndex(5d);
         Bar bar101 = circularGauge.bar(101d);
@@ -327,7 +327,7 @@ public class GlobalFragment extends Fragment {
 
         circularGauge.label(2d)
                 .text("Recuperados - <span style=\"\">"+recuperados+"</span>")
-                .fontColor("#354010")
+                .fontColor("#30728C")
                 .fontWeight("bold")
                 .fontSize(14)
                 .useHtml(true)
@@ -343,7 +343,7 @@ public class GlobalFragment extends Fragment {
         bar2.dataIndex(2d);
         bar2.radius(60d);
         bar2.width(17d);
-        bar2.fill(new SolidFill("#354010", 1d));
+        bar2.fill(new SolidFill("#30728C", 1d));
         bar2.stroke(null);
         bar2.zIndex(5d);
         Bar bar102 = circularGauge.bar(102d);
@@ -356,7 +356,7 @@ public class GlobalFragment extends Fragment {
 
         circularGauge.label(3d)
                 .text("Activos - <span style=\"\">"+activosString+"</span>")
-                .fontColor("#9B627D")
+                .fontColor("#6E6E6E")
                 .fontWeight("bold")
                 .fontSize(14)
                 .useHtml(true)
@@ -372,7 +372,7 @@ public class GlobalFragment extends Fragment {
         bar3.dataIndex(3d);
         bar3.radius(40d);
         bar3.width(17d);
-        bar3.fill(new SolidFill("#9B627D", 1d));
+        bar3.fill(new SolidFill("#6E6E6E", 1d));
         bar3.stroke(null);
         bar3.zIndex(5d);
         Bar bar103 = circularGauge.bar(103d);

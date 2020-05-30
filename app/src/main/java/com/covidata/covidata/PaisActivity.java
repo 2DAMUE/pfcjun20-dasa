@@ -26,8 +26,13 @@ import com.anychart.enums.LegendLayout;
 
 import org.json.JSONException;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,16 +45,20 @@ public class PaisActivity extends AppCompatActivity {
     ImageView imagen_pais;
     String nombreConTodo;
     ActionBar actionBar;
-    TextView tvConfirmados,tvFallecidos,tvRecuperados;
+    TextView cajaConfirmadosHoy, cajaConfirmadosAyer, cajaFallecidosHoy, cajaFallecidosAyer, cajaRecuperadosHoy, cajaRecuperadosAyer, cajatexto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pais);
 
-        tvConfirmados= findViewById(R.id.tvConfirmados);
-        tvFallecidos=findViewById(R.id.tvFallecidos);
-        tvRecuperados=findViewById(R.id.tvRecuperados);
+        cajaConfirmadosHoy=findViewById(R.id.confirmadosHoy);
+        cajaConfirmadosAyer=findViewById(R.id.confirmadosAyer);
+        cajaFallecidosHoy=findViewById(R.id.fallecidosHoy);
+        cajaFallecidosAyer=findViewById(R.id.fallecidosAyer);
+        cajaRecuperadosHoy=findViewById(R.id.recuperadosHoy);
+        cajaRecuperadosAyer=findViewById(R.id.recuperadosAyer);
+        cajatexto=findViewById(R.id.texto);
 
         nombrePais = getIntent().getStringExtra("Nombre");
         iso = getIntent().getStringExtra("ISO");
@@ -72,20 +81,20 @@ public class PaisActivity extends AppCompatActivity {
 
     }
 
-    public void crearGrafico(ArrayList<Integer>lista){
+    public void crearGrafico(DatoGlobal datoGlobal){
 
         AnyChartView anyChartView = findViewById(R.id.graficoPais);
 
         anyChartView.setProgressBar(findViewById(R.id.progress_bar));
 
         Pie pie = AnyChart.pie();
-        String colores[] = {"#86A6A6", "#7E303F", "#354010"};
+        String colores[] = {"#BF8A26", "#591E3A", "#30728C"};
 
 
         List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("Confirmados", lista.get(0)));
-        data.add(new ValueDataEntry("Fallecidos", lista.get(1)));
-        data.add(new ValueDataEntry("Recuperados", lista.get(2)));
+        data.add(new ValueDataEntry("Confirmados", datoGlobal.getConfirmados()));
+        data.add(new ValueDataEntry("Fallecidos", datoGlobal.getFallecidos()));
+        data.add(new ValueDataEntry("Recuperados", datoGlobal.getRecuperados()));
 
         pie.data(data);
 
@@ -114,14 +123,28 @@ public class PaisActivity extends AppCompatActivity {
                         Log.d("Response", response);
 
                         try {
-                            ArrayList<Integer> lista=p.parsearJSONFechaPais(response,fecha);
-                            int confirmados = lista.get(0);
-                            int fallecidos = lista.get(1);
-                            int recuperados = lista.get(2);
-                            tvConfirmados.setText(NumberFormat.getInstance().format(confirmados));
-                            tvFallecidos.setText(NumberFormat.getInstance().format(fallecidos));
-                            tvRecuperados.setText(NumberFormat.getInstance().format(recuperados));
-                            crearGrafico(lista);
+                            DatoGlobal datoGlobal=p.parsearJSONFechaPais(response,fecha);
+                            String fechaActual = datoGlobal.getFecha();
+                            cajatexto.setText("*Datos actualizados a día "+fechaActual);
+                            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                            Date date=null;
+
+                            try {
+                                date = formatter.parse(fechaActual);
+                            }catch (ParseException e ){
+                                e.printStackTrace();
+                            }
+
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.setTime(date);
+
+                            calendar.add(Calendar.DAY_OF_YEAR, -1);
+                            Date diaAnterior=calendar.getTime();
+                            DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                            String diaAnteriorString = formato.format(diaAnterior);
+                            hacerPeticionDiaAnterior(diaAnteriorString, datoGlobal);
+
+                            crearGrafico(datoGlobal);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -180,6 +203,67 @@ public class PaisActivity extends AppCompatActivity {
         };
         Volley.newRequestQueue(this).add(postRequest);
     }
+
+
+    private void hacerPeticionDiaAnterior(final String fechaAnterior, final DatoGlobal datoGlobalHoy) {
+
+        String url = "https://covidapi.info/api/v1/country/"+iso+"/"+fechaAnterior;
+
+        StringRequest postRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // por aquí recibo el XML o JSON
+                        ParseoJSON p=new ParseoJSON();
+                        Log.d("Response", response);
+
+                        try {
+                            DatoGlobal datoGlobal=p.parsearJSONFechaPais(response,fechaAnterior);
+                            int confirmados = datoGlobal.getConfirmados();
+                            int fallecidos = datoGlobal.getFallecidos();
+                            int recuperados = datoGlobal.getRecuperados();
+                            String fecha = datoGlobal.getFecha();
+
+                            cajaConfirmadosAyer.setText(NumberFormat.getInstance().format(confirmados));
+                            cajaFallecidosAyer.setText(NumberFormat.getInstance().format(fallecidos));
+                            cajaRecuperadosAyer.setText(NumberFormat.getInstance().format(recuperados));
+
+
+                            int calculoConfirmados=datoGlobalHoy.getConfirmados()-confirmados;
+                            int calculoFallecidos=datoGlobalHoy.getFallecidos()-fallecidos;
+                            int calculoRecuerados=datoGlobalHoy.getRecuperados()-recuperados;
+
+
+                            cajaConfirmadosHoy.setText(NumberFormat.getInstance().format(datoGlobalHoy.getConfirmados()));
+                            cajaFallecidosHoy.setText(NumberFormat.getInstance().format(datoGlobalHoy.getFallecidos()));
+                            cajaRecuperadosHoy.setText(NumberFormat.getInstance().format(datoGlobalHoy.getRecuperados()));
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", error.toString());
+                    }
+                }
+        ) {
+
+            @Override
+            public Map<String, String> getHeaders(){
+                Map<String, String>  params = new HashMap<>();
+                params.put("Accept","application/xml");
+                return params;
+            }
+
+        };
+        Volley.newRequestQueue(this).add(postRequest);
+    }
+
 
     private void hacerPeticionNombre(String iso) {
 
@@ -241,6 +325,10 @@ public class PaisActivity extends AppCompatActivity {
         paises.put("rusia",R.drawable.rusia);
         paises.put("sudafrica",R.drawable.sudafrica);
         paises.put("tanzania",R.drawable.tanzania);
+        paises.put("japon",R.drawable.japon);
+        paises.put("espana",R.drawable.espanacanariasno);
+        paises.put("brasil",R.drawable.brasil);
+        paises.put("nigeria",R.drawable.nigeria);
 
         return paises;
     }

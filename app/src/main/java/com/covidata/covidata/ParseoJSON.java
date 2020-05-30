@@ -40,10 +40,10 @@ class ParseoJSON {
     }
 
 
-    public ArrayList<Integer> parsearJSONFechaPais(String JSON, String fecha)throws JSONException {
+    public DatoGlobal parsearJSONFechaPais(String JSON, String fecha)throws JSONException {
 
-        ArrayList<Integer>listaDatosGlobales = new ArrayList<>();
         JSONObject objeto_total = new JSONObject(JSON);
+        DatoGlobal datoglobal=null;
 
         try{
 
@@ -53,15 +53,13 @@ class ParseoJSON {
             int deaths = objetoFecha.getInt("deaths");
             int recovered = objetoFecha.getInt("recovered");
 
-            listaDatosGlobales.add(confirmed);
-            listaDatosGlobales.add(deaths);
-            listaDatosGlobales.add(recovered);
+            datoglobal = new DatoGlobal(fecha, confirmed, deaths, recovered);
 
         }catch (JSONException e){
             Log.d("location","error en el elemento: "+e.getLocalizedMessage());
         }
 
-        return listaDatosGlobales;
+        return datoglobal;
     }
 
     public String parsearJSONNombre(String JSON)throws JSONException {
