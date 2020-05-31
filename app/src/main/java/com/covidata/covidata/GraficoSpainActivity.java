@@ -61,8 +61,6 @@ public class GraficoSpainActivity extends AppCompatActivity {
 
         cartesian.animation(true);
 
-
-
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
 
         cartesian.title("Evolución Covid-19 en España").margin("10px");
