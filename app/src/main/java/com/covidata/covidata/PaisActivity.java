@@ -90,8 +90,8 @@ public class PaisActivity extends AppCompatActivity {
         Pie pie = AnyChart.pie();
         String colores[] = {"#BF8A26", "#591E3A", "#30728C"};
 
-
         List<DataEntry> data = new ArrayList<>();
+
         data.add(new ValueDataEntry("Confirmados", datoGlobal.getConfirmados()));
         data.add(new ValueDataEntry("Fallecidos", datoGlobal.getFallecidos()));
         data.add(new ValueDataEntry("Recuperados", datoGlobal.getRecuperados()));
