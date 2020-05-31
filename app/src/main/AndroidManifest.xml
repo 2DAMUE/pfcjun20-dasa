@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".CAActivity"
+            android:theme="@style/temaPais"></activity>
         <activity
             android:name=".GraficoSpainActivity"
             android:parentActivityName=".MainActivity"
