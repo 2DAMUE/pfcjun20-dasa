@@ -53,7 +53,7 @@ public class SpainFragment extends Fragment implements TareaAsincrona.rellenarAr
 
     View view;
     TextView cajaConfirmadosHoy, cajaConfirmadosAyer, cajaFallecidosHoy, cajaFallecidosAyer, cajaRecuperadosHoy, cajaRecuperadosAyer,
-            cajatexto, cajaFechaAyer;
+            cajatexto,cajaFechaAyer, cajaSubidaConfirmados, cajaSubidaFallecidos, cajaSubidaRecuerpados, cajaFechados;
     Button boton;
 
     @Override
@@ -68,6 +68,10 @@ public class SpainFragment extends Fragment implements TareaAsincrona.rellenarAr
         cajaRecuperadosHoy=view.findViewById(R.id.recuperadosHoy);
         cajaRecuperadosAyer=view.findViewById(R.id.recuperadosAyer);
         cajaFechaAyer=view.findViewById(R.id.fecha);
+        cajaSubidaConfirmados=view.findViewById(R.id.subidaConfirmados);
+        cajaSubidaFallecidos=view.findViewById(R.id.subidaFallecidos);
+        cajaSubidaRecuerpados=view.findViewById(R.id.subidaRecuperados);
+        cajaFechados=view.findViewById(R.id.fecha2);
 
         //Obtengo la fecha actual
         Date objDate = new Date();
@@ -109,8 +113,17 @@ public class SpainFragment extends Fragment implements TareaAsincrona.rellenarAr
         cajaFallecidosHoy.setText(NumberFormat.getInstance().format(fallecidosHoy));
         cajaRecuperadosHoy.setText(NumberFormat.getInstance().format(nRecuperados));
 
+        int calculoConfirmados=confirmadosHoy-confirmadosAyer;
+        int calculoFallecidos=fallecidosHoy-fallecidosAyer;
+        int calculoRecuerados=nRecuperados-nRecuperados;
+
+        cajaSubidaConfirmados.setText("+ "+calculoConfirmados);
+        cajaSubidaFallecidos.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
+        cajaSubidaRecuerpados.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
+
         cajatexto.setText("*Datos actualizados a día "+lista.get(lista.size()-1).getFecha());
         cajaFechaAyer.setText(lista.get(lista.size()-2).getFecha());
+        cajaFechados.setText("Hoy");
         crearGrafico(lista.get(lista.size()-1),recuperados);
 
         boton.setOnClickListener(new View.OnClickListener() {

@@ -2,13 +2,10 @@ package com.covidata.covidata;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -18,14 +15,8 @@ import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
-import com.anychart.chart.common.listener.Event;
-import com.anychart.chart.common.listener.ListenersInterface;
 import com.anychart.charts.Pie;
-import com.anychart.enums.Align;
-import com.anychart.enums.LegendLayout;
-
 import org.json.JSONException;
-
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -46,7 +37,7 @@ public class PaisActivity extends AppCompatActivity {
     String nombreConTodo;
     ActionBar actionBar;
     TextView cajaConfirmadosHoy, cajaConfirmadosAyer, cajaFallecidosHoy, cajaFallecidosAyer, cajaRecuperadosHoy, cajaRecuperadosAyer,
-            cajatexto,cajaFechaAyer;
+            cajatexto,cajaFechaAyer, cajaSubidaConfirmados, cajaSubidaFallecidos, cajaSubidaRecuerpados, cajaFechados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +52,10 @@ public class PaisActivity extends AppCompatActivity {
         cajaRecuperadosAyer=findViewById(R.id.recuperadosAyer);
         cajatexto=findViewById(R.id.texto);
         cajaFechaAyer=findViewById(R.id.fecha);
+        cajaSubidaConfirmados=findViewById(R.id.subidaConfirmados);
+        cajaSubidaFallecidos=findViewById(R.id.subidaFallecidos);
+        cajaSubidaRecuerpados=findViewById(R.id.subidaRecuperados);
+        cajaFechados=findViewById(R.id.fecha2);
 
         nombrePais = getIntent().getStringExtra("Nombre");
         iso = getIntent().getStringExtra("ISO");
@@ -145,6 +140,7 @@ public class PaisActivity extends AppCompatActivity {
                             DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
                             String diaAnteriorString = formato.format(diaAnterior);
                             cajaFechaAyer.setText(diaAnteriorString);
+                            cajaFechados.setText("Hoy");
                             hacerPeticionDiaAnterior(diaAnteriorString, datoGlobal);
 
                             crearGrafico(datoGlobal);
@@ -240,6 +236,10 @@ public class PaisActivity extends AppCompatActivity {
                             cajaConfirmadosHoy.setText(NumberFormat.getInstance().format(datoGlobalHoy.getConfirmados()));
                             cajaFallecidosHoy.setText(NumberFormat.getInstance().format(datoGlobalHoy.getFallecidos()));
                             cajaRecuperadosHoy.setText(NumberFormat.getInstance().format(datoGlobalHoy.getRecuperados()));
+
+                            cajaSubidaConfirmados.setText("+ "+NumberFormat.getInstance().format(calculoConfirmados));
+                            cajaSubidaFallecidos.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
+                            cajaSubidaRecuerpados.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
 
 
                         } catch (JSONException e) {

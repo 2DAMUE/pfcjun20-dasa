@@ -61,7 +61,7 @@
             <TextView
                 android:id="@+id/color1"
                 android:layout_weight="1"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"/>
 
@@ -75,18 +75,24 @@
             <TextView
                 android:id="@+id/fecha"
                 android:layout_weight="3"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="14dp"/>
 
             <TextView
-                android:id="@+id/fecha2"
-                android:layout_weight="4"
-                android:layout_width="120dp"
+            android:id="@+id/fecha2"
+            android:layout_weight="4"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/blanco"
+                android:layout_weight="5"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Hoy"
-                android:textSize="14dp"
                 android:textAlignment="center"/>
 
         </LinearLayout>
@@ -102,7 +108,7 @@
             <TextView
                 android:id="@+id/color2"
                 android:layout_weight="1"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:background="@color/AmarilloDorado"/>
@@ -117,7 +123,7 @@
 
             <TextView
                 android:id="@+id/confirmadosAyer"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:textAlignment="center"
@@ -126,12 +132,20 @@
 
             <TextView
                 android:id="@+id/confirmadosHoy"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
                 android:textColor="@color/negro"/>
+
+            <TextView
+                android:id="@+id/subidaConfirmados"
+                android:layout_weight="5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 
@@ -146,7 +160,7 @@
             <TextView
                 android:id="@+id/color3"
                 android:layout_weight="1"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:background="@color/morado"/>
@@ -162,7 +176,7 @@
             <TextView
                 android:id="@+id/fallecidosAyer"
                 android:layout_weight="3"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
@@ -171,11 +185,19 @@
             <TextView
                 android:id="@+id/fallecidosHoy"
                 android:layout_weight="4"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
                 android:textColor="@color/negro"/>
+
+            <TextView
+                android:id="@+id/subidaFallecidos"
+                android:layout_weight="5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 
@@ -190,7 +212,7 @@
             <TextView
                 android:id="@+id/color4"
                 android:layout_weight="1"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:background="@color/Azul"/>
@@ -206,7 +228,7 @@
             <TextView
                 android:id="@+id/recuperadosAyer"
                 android:layout_weight="3"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
@@ -215,11 +237,19 @@
             <TextView
                 android:id="@+id/recuperadosHoy"
                 android:layout_weight="4"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
                 android:textColor="@color/negro"/>
+
+            <TextView
+                android:id="@+id/subidaRecuperados"
+                android:layout_weight="5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 
