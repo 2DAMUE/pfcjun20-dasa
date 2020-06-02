@@ -51,8 +51,7 @@
         <com.anychart.AnyChartView
             android:id="@+id/grafico"
             android:layout_width="match_parent"
-            android:layout_height="420dp">
-
+            android:layout_height="410dp">
         </com.anychart.AnyChartView>
 
 
@@ -232,6 +231,22 @@
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
                 android:textColor="@color/negro"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:id="@+id/texto"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="12dp"/>
 
         </LinearLayout>
 

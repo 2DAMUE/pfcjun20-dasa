@@ -56,7 +56,7 @@ public class GlobalFragment extends Fragment {
     EditText busqueda_pais;
     View view;
     TextView cajaConfirmadosHoy, cajaConfirmadosAyer, cajaFallecidosHoy, cajaFallecidosAyer, cajaRecuperadosHoy, cajaRecuperadosAyer,
-    cajaActivosHoy, cajaActivosAyer, cajaFechaAyer;
+    cajaActivosHoy, cajaActivosAyer, cajaFechaAyer, cajatexto;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -75,6 +75,7 @@ public class GlobalFragment extends Fragment {
         cajaActivosHoy=view.findViewById(R.id.activosHoy);
         cajaActivosAyer=view.findViewById(R.id.activosAyer);
         cajaFechaAyer=view.findViewById(R.id.fecha);
+        cajatexto=view.findViewById(R.id.texto);
 
         final Map<String,String> paises = crearMapaPaises();
 
@@ -133,6 +134,7 @@ public class GlobalFragment extends Fragment {
                             DatoGlobal datoGlobal =p.parsearJSON(response);//Este response es el String JSON que le pasamos al metodo
                             crearGrafico(datoGlobal);
                             String fechaActual = datoGlobal.getFecha();
+                            cajatexto.setText("*Datos actualizados a día "+fechaActual);
                             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                             Date date=null;
 

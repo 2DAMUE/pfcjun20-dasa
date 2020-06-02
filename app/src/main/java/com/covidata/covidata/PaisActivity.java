@@ -45,7 +45,8 @@ public class PaisActivity extends AppCompatActivity {
     ImageView imagen_pais;
     String nombreConTodo;
     ActionBar actionBar;
-    TextView cajaConfirmadosHoy, cajaConfirmadosAyer, cajaFallecidosHoy, cajaFallecidosAyer, cajaRecuperadosHoy, cajaRecuperadosAyer, cajatexto;
+    TextView cajaConfirmadosHoy, cajaConfirmadosAyer, cajaFallecidosHoy, cajaFallecidosAyer, cajaRecuperadosHoy, cajaRecuperadosAyer,
+            cajatexto,cajaFechaAyer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class PaisActivity extends AppCompatActivity {
         cajaRecuperadosHoy=findViewById(R.id.recuperadosHoy);
         cajaRecuperadosAyer=findViewById(R.id.recuperadosAyer);
         cajatexto=findViewById(R.id.texto);
+        cajaFechaAyer=findViewById(R.id.fecha);
 
         nombrePais = getIntent().getStringExtra("Nombre");
         iso = getIntent().getStringExtra("ISO");
@@ -142,6 +144,7 @@ public class PaisActivity extends AppCompatActivity {
                             Date diaAnterior=calendar.getTime();
                             DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
                             String diaAnteriorString = formato.format(diaAnterior);
+                            cajaFechaAyer.setText(diaAnteriorString);
                             hacerPeticionDiaAnterior(diaAnteriorString, datoGlobal);
 
                             crearGrafico(datoGlobal);

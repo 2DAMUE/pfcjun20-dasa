@@ -52,7 +52,8 @@ import java.util.Map;
 public class SpainFragment extends Fragment implements TareaAsincrona.rellenarArrayList{
 
     View view;
-    TextView cajaConfirmadosHoy, cajaConfirmadosAyer, cajaFallecidosHoy, cajaFallecidosAyer, cajaRecuperadosHoy, cajaRecuperadosAyer,cajatexto;
+    TextView cajaConfirmadosHoy, cajaConfirmadosAyer, cajaFallecidosHoy, cajaFallecidosAyer, cajaRecuperadosHoy, cajaRecuperadosAyer,
+            cajatexto, cajaFechaAyer;
     Button boton;
 
     @Override
@@ -66,6 +67,7 @@ public class SpainFragment extends Fragment implements TareaAsincrona.rellenarAr
         cajaFallecidosAyer=view.findViewById(R.id.fallecidosAyer);
         cajaRecuperadosHoy=view.findViewById(R.id.recuperadosHoy);
         cajaRecuperadosAyer=view.findViewById(R.id.recuperadosAyer);
+        cajaFechaAyer=view.findViewById(R.id.fecha);
 
         //Obtengo la fecha actual
         Date objDate = new Date();
@@ -108,6 +110,7 @@ public class SpainFragment extends Fragment implements TareaAsincrona.rellenarAr
         cajaRecuperadosHoy.setText(NumberFormat.getInstance().format(nRecuperados));
 
         cajatexto.setText("*Datos actualizados a día "+lista.get(lista.size()-1).getFecha());
+        cajaFechaAyer.setText(lista.get(lista.size()-2).getFecha());
         crearGrafico(lista.get(lista.size()-1),recuperados);
 
         boton.setOnClickListener(new View.OnClickListener() {
