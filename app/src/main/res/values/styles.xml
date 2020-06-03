@@ -48,4 +48,15 @@
         <item name="android:textColor">#E64C66</item>
     </style>
 
+    <style name="MyAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textAppearanceSmall">@font/montserratregular</item>
+        <item name="android:textAppearanceMedium">@font/montserratregular</item>
+        <item name="android:textAppearanceLarge">@font/montserratregular</item>
+        <item name="android:textColor">@color/Bordeaux</item>
+        <item name="colorPrimary">@color/Bordeaux</item>
+        <item name="colorPrimaryDark">@color/Bordeaux</item>
+        <item name="colorAccent">@color/Bordeaux</item>
+    </style>
+
+
 </resources>

@@ -80,6 +80,47 @@ class ParseoJSON {
         return nombre;
     }
 
+    public ArrayList<DatoCCAA> parsearJSONCCAA(String JSON)throws JSONException {
+
+        JSONObject objeto_total = new JSONObject(JSON);
+        ArrayList<DatoCCAA> lista = new ArrayList<>();
+        int confirmados=0;
+        int fallecidos=0;
+        int recuperados=0;
+        int confirmadosDiario=0;
+        int fallecidosDiario=0;
+        int recuperadosDiario=0;
+
+        try{
+            JSONArray lista_timeline= objeto_total.getJSONArray("timeline");
+            for (int indice = 0; indice < lista_timeline.length(); indice++) {
+                JSONObject objeto = (JSONObject) lista_timeline.get(indice);
+                String fecha= objeto.getString("fecha");
+                Log.e("fechaccaa",fecha);
+                JSONArray lista_regiones=objeto.getJSONArray("regiones");
+                for (int indice1 = 0; indice1 < lista_regiones.length(); indice1++) {
+                    JSONObject objeto_region = (JSONObject) lista_regiones.get(indice1);
+                    JSONObject data = objeto_region.getJSONObject("data");
+                    confirmados = data.getInt("casosConfirmados");
+                    Log.e("casosC",""+confirmados);
+                    fallecidos = data.getInt("casosFallecidos");
+                    recuperados = data.getInt("casosRecuperados");
+                    confirmadosDiario = data.getInt("casosConfirmadosDiario");
+                    fallecidosDiario = data.getInt("casosFallecidosDiario");
+                    recuperadosDiario = data.getInt("casosRecuperadosDiario");
+                }
+                DatoCCAA da= new DatoCCAA(fecha,confirmados,fallecidos,recuperados,confirmadosDiario,fallecidosDiario,recuperadosDiario);
+                lista.add(da);
+            }
+
+
+        }catch (JSONException e){
+            Log.d("location","error en el elemento: "+e.getLocalizedMessage());
+        }
+
+        return lista;
+    }
+
 
 
 }

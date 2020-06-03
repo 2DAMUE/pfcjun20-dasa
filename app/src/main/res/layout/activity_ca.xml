@@ -18,7 +18,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.423">
+
     </com.anychart.AnyChartView>
+
 
     <ImageView
         android:id="@+id/imagen_ccaa"
@@ -29,12 +31,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <ImageView
+        android:id="@+id/aclaracion"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="370dp"
+        app:srcCompat="@drawable/ic_question"
+        app:layout_constraintVertical_bias="0.030"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <com.anychart.AnyChartView
         android:id="@+id/grafico2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="400dp">
     </com.anychart.AnyChartView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="900px"
+        android:indeterminateTint="@color/Bordeaux"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 
     <LinearLayout
         android:id="@+id/general"
@@ -51,15 +77,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:id="@+id/color1"
-                android:layout_weight="1"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"/>
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp">
 
             <TextView
                 android:id="@+id/titulo"
@@ -71,19 +90,24 @@
             <TextView
                 android:id="@+id/fecha"
                 android:layout_weight="3"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textSize="14dp"
-                android:text="Ayer"/>
+                android:textSize="14dp"/>
 
             <TextView
                 android:id="@+id/fecha2"
                 android:layout_weight="4"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:text="Hoy"
                 android:textSize="14dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/blanco"
+                android:layout_weight="5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
                 android:textAlignment="center"/>
 
         </LinearLayout>
@@ -96,13 +120,6 @@
             android:layout_marginRight="20dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/color2"
-                android:layout_weight="1"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:background="@color/AmarilloDorado"/>
 
             <TextView
                 android:id="@+id/tituloConfirmados"
@@ -114,7 +131,7 @@
 
             <TextView
                 android:id="@+id/confirmadosAyer"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:textAlignment="center"
@@ -123,12 +140,20 @@
 
             <TextView
                 android:id="@+id/confirmadosHoy"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
                 android:textColor="@color/negro"/>
+
+            <TextView
+                android:id="@+id/subidaConfirmados"
+                android:layout_weight="5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 
@@ -140,13 +165,6 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp">
 
-            <TextView
-                android:id="@+id/color3"
-                android:layout_weight="1"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:background="@color/morado"/>
 
             <TextView
                 android:id="@+id/tituloFallecidos"
@@ -159,7 +177,7 @@
             <TextView
                 android:id="@+id/fallecidosAyer"
                 android:layout_weight="3"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
@@ -168,11 +186,19 @@
             <TextView
                 android:id="@+id/fallecidosHoy"
                 android:layout_weight="4"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
                 android:textColor="@color/negro"/>
+
+            <TextView
+                android:id="@+id/subidaFallecidos"
+                android:layout_weight="5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 
@@ -182,16 +208,9 @@
             android:orientation="horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="32dp"
             android:layout_marginTop="5dp">
 
-            <TextView
-                android:id="@+id/color4"
-                android:layout_weight="1"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:background="@color/Azul"/>
 
             <TextView
                 android:id="@+id/tituloRecuperados"
@@ -204,7 +223,7 @@
             <TextView
                 android:id="@+id/recuperadosAyer"
                 android:layout_weight="3"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
@@ -213,11 +232,19 @@
             <TextView
                 android:id="@+id/recuperadosHoy"
                 android:layout_weight="4"
-                android:layout_width="120dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:fontFamily="@font/montserratmedium"
                 android:textColor="@color/negro"/>
+
+            <TextView
+                android:id="@+id/subidaRecuperados"
+                android:layout_weight="5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 

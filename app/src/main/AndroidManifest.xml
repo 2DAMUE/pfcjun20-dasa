@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".CAActivity"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/temaPais"></activity>
         <activity
             android:name=".GraficoSpainActivity"

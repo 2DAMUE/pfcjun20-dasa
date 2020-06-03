@@ -48,12 +48,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView nombretv;
+        ImageView imagenMas;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             nombretv = itemView.findViewById((R.id.nombre));
-            nombretv.setOnClickListener(new View.OnClickListener() {
+            imagenMas = itemView.findViewById((R.id.imagenMas));
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(itemView.getContext(), CAActivity.class);
@@ -61,6 +63,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     itemView.getContext().startActivity(intent);
                 }
             });
+
         }
 
     }

@@ -81,12 +81,12 @@
                 android:textSize="14dp"/>
 
             <TextView
-            android:id="@+id/fecha2"
-            android:layout_weight="4"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:textAlignment="center"/>
+                android:id="@+id/fecha2"
+                android:layout_weight="4"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/blanco"
