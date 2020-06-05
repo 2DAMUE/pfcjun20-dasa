@@ -74,11 +74,4 @@ public class ComunidadAutonomaFragment extends Fragment {
     }
 
 
-
-
-
-
-
-
-
 }
