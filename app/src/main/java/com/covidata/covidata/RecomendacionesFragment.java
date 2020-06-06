@@ -8,13 +8,13 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 
-public class AutodiagnosticoFragment extends Fragment {
+public class RecomendacionesFragment extends Fragment {
 
     View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_autodiagnostico, container, false);
+        view = inflater.inflate(R.layout.fragment_recomendaciones, container, false);
 
         return view;
     }

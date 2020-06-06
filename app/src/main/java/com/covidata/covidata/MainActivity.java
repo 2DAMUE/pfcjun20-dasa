@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -131,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
                 goToFragment(new ArticulosFragment(), false);
                 break;
             case 4:
-                goToFragment(new AutodiagnosticoFragment(), false);
+                goToFragment(new AutodiagnosticoRecomendacionesFragment(), false);
                 break;
             case 5:
                 goToFragment(new NuevoFragment(), false);
