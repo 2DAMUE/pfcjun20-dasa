@@ -160,9 +160,24 @@ public class CAActivity extends AppCompatActivity {
                             cajaFallecidosHoy.setText(NumberFormat.getInstance().format(fallecidosHoy));
                             cajaRecuperadosHoy.setText(NumberFormat.getInstance().format(recuperadosHoy));
 
-                            cajaSubidaConfirmados.setText("+ "+NumberFormat.getInstance().format(calculoConfirmados));
-                            cajaSubidaFallecidos.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
-                            cajaSubidaRecuerpados.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
+                            if(calculoConfirmados<0){
+                                cajaSubidaConfirmados.setText(NumberFormat.getInstance().format(calculoConfirmados));
+                            }else{
+                                cajaSubidaConfirmados.setText("+ "+NumberFormat.getInstance().format(calculoConfirmados));
+                            }
+
+                            if(calculoFallecidos<0){
+                                cajaSubidaFallecidos.setText(NumberFormat.getInstance().format(calculoFallecidos));
+                            }else{
+                                cajaSubidaFallecidos.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
+                            }
+
+                            if(calculoRecuerados<0){
+                                cajaSubidaRecuerpados.setText(NumberFormat.getInstance().format(calculoRecuerados));
+                            }else{
+                                cajaSubidaRecuerpados.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
+                            }
+
 
                             crearGrafico(listaCCAA);
 
