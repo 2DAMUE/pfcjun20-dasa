@@ -1,13 +1,381 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Home Tab"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
-</RelativeLayout>
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/White">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="18dp"
+                android:text="Seleccione su comunidad autónoma"
+                android:layout_gravity="center">
+            </TextView>
+
+            <Spinner
+                android:id="@+id/mSpinner"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:elevation="7dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/JustRight" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/ll_busqueda_pais"
+            android:layout_gravity="center"
+            android:elevation="7dp">
+
+            <EditText
+                android:id="@+id/edad"
+                android:layout_width="260dp"
+                android:layout_height="49dp"
+                android:layout_gravity="center"
+                android:textColorHint="@drawable/selector_busqueda"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/et_busqueda_pais"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Introduzca su edad"
+                android:textAlignment="center"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/JustRight" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="18dp"
+                android:text="Indique si tiene alguna patologia previa"></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Hipertensión" />
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Diabetes" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox3"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Obesidad" />
+
+                <CheckBox
+                    android:id="@+id/checkBox4"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Cancer" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox5"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Enfermedad renal" />
+
+                <CheckBox
+                    android:id="@+id/checkBox6"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cardiopatia" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox7"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Inmunosupresión" />
+
+                <CheckBox
+                    android:id="@+id/checkBox8"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Patologia pulmonar" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox9"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Neoplastias activas" />
+
+                <CheckBox
+                    android:id="@+id/checkBox10"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Patologia hepática" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/JustRight" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:textSize="18dp"
+                android:text="¿Presenta alguno de estos síntomas?"></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox11"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Fiebre(38º o más)" />
+
+                <CheckBox
+                    android:id="@+id/checkBox12"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Cansancio" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox13"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Tos seca" />
+
+                <CheckBox
+                    android:id="@+id/checkBox14"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Dificultad para respirar" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox15"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Diarrea" />
+
+                <CheckBox
+                    android:id="@+id/checkBox16"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Dolor de garganta" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox17"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Vómitos" />
+
+                <CheckBox
+                    android:id="@+id/checkBox18"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Dolor de cabeza" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/JustRight" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:textSize="18dp"
+                android:text="En los últimos 14 días, ¿ha tenido contacto con alguna persona con una infección sospechosa o confirmada por el virus de la COVID-19? "></TextView>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/opciones"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_si"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:checked="false"
+                    android:text="Si" />
+
+                <RadioButton
+                    android:id="@+id/radio_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="No" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
