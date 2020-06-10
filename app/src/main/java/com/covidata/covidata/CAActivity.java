@@ -159,9 +159,24 @@ public class CAActivity extends AppCompatActivity {
                             cajaFallecidosHoy.setText(NumberFormat.getInstance().format(fallecidosHoy));
                             cajaRecuperadosHoy.setText(NumberFormat.getInstance().format(recuperadosHoy));
 
-                            cajaSubidaConfirmados.setText("+ "+NumberFormat.getInstance().format(calculoConfirmados));
-                            cajaSubidaFallecidos.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
-                            cajaSubidaRecuerpados.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
+                            if(calculoConfirmados<0){
+                                cajaSubidaConfirmados.setText(NumberFormat.getInstance().format(calculoConfirmados));
+                            }else{
+                                cajaSubidaConfirmados.setText("+ "+NumberFormat.getInstance().format(calculoConfirmados));
+                            }
+
+                            if(calculoFallecidos<0){
+                                cajaSubidaFallecidos.setText(NumberFormat.getInstance().format(calculoFallecidos));
+                            }else{
+                                cajaSubidaFallecidos.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
+                            }
+
+                            if(calculoRecuerados<0){
+                                cajaSubidaRecuerpados.setText(NumberFormat.getInstance().format(calculoRecuerados));
+                            }else{
+                                cajaSubidaRecuerpados.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
+                            }
+
 
                             crearGrafico(listaCCAA);
 
@@ -315,22 +330,22 @@ public class CAActivity extends AppCompatActivity {
         lista.add(new CCAA("Andalucía","es-an",0));
         lista.add(new CCAA("Aragón", "es-ar",R.drawable.aragon));
         lista.add(new CCAA("Asturias","es-as",R.drawable.asturias));
+        lista.add(new CCAA("Canarias","es-ib",0));
         lista.add(new CCAA("Cantabria", "es-cb",R.drawable.cantabria));
-        lista.add(new CCAA("Castilla-La Mancha","es-cm",0));
+        lista.add(new CCAA("Castilla-La Mancha","es-cm",R.drawable.castillalamancha));
         lista.add(new CCAA("Castilla León","es-cl",0));
-        lista.add(new CCAA("Cataluña","es-ct",0));
+        lista.add(new CCAA("Cataluña","es-ct",R.drawable.cataluna));
+        lista.add(new CCAA("Ceuta","es-ce",0));
+        lista.add(new CCAA("Comunidad de Madrid","es-md",0));
+        lista.add(new CCAA("Comunidad Valenciana","es-vc",0));
         lista.add(new CCAA("Extremadura","es-ex",0));
         lista.add(new CCAA("Galicia","es-ga",R.drawable.galicia));
         lista.add(new CCAA("Islas Baleares","es-ib",0));
-        lista.add(new CCAA("Canarias","es-ib",0));
-        lista.add(new CCAA("La Rioja","es-ri",0));
-        lista.add(new CCAA("Comunidad de Madrid","es-md",0));
+        lista.add(new CCAA("La Rioja","es-ri",R.drawable.larioja));
+        lista.add(new CCAA("Melilla","es-ml",0));
         lista.add(new CCAA("Murcia","es-mc",0));
         lista.add(new CCAA("Navarra","es-nc",0));
-        lista.add(new CCAA("Pais Vasco","es-pv",0));
-        lista.add(new CCAA("Comunidad Valenciana","es-vc",0));
-        lista.add(new CCAA("Ceuta","es-ce",0));
-        lista.add(new CCAA("Melilla","es-ml",0));
+        lista.add(new CCAA("Pais Vasco","es-pv",R.drawable.paisvasco));
         return lista;
     }
 

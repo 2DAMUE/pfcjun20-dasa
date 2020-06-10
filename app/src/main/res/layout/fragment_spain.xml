@@ -120,6 +120,7 @@
                 android:layout_width="115dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:textColor="@color/AmarilloDorado"
                 android:text="Confirmados" />
 
             <TextView
@@ -172,6 +173,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_width="115dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/morado"
                 android:text="Fallecidos"/>
 
             <TextView
@@ -225,6 +227,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_width="115dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/Azul"
                 android:text="Recuperados"/>
 
             <TextView

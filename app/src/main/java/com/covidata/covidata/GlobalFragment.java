@@ -210,11 +210,30 @@ public class GlobalFragment extends Fragment {
                             int calculoRecuerados=datoGlobalHoy.getRecuperados()-recuperados;
                             int calculoActivos=((datoGlobalHoy.getConfirmados()-(datoGlobalHoy.getFallecidos()+datoGlobalHoy.getRecuperados()))-activos);
 
+                            if(calculoConfirmados<0){
+                                cajaConfirmadosHoy.setText(NumberFormat.getInstance().format(calculoConfirmados));
+                            }else{
+                                cajaConfirmadosHoy.setText("+ "+NumberFormat.getInstance().format(calculoConfirmados));
+                            }
 
-                            cajaConfirmadosHoy.setText("+ "+NumberFormat.getInstance().format(calculoConfirmados));
-                            cajaFallecidosHoy.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
-                            cajaRecuperadosHoy.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
-                            cajaActivosHoy.setText("+ "+NumberFormat.getInstance().format(calculoActivos));
+                            if(calculoFallecidos<0){
+                                cajaFallecidosHoy.setText(NumberFormat.getInstance().format(calculoFallecidos));
+                            }else{
+                                cajaFallecidosHoy.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
+                            }
+
+                            if(calculoRecuerados<0){
+                                cajaRecuperadosHoy.setText(NumberFormat.getInstance().format(calculoRecuerados));
+                            }else{
+                                cajaRecuperadosHoy.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
+                            }
+
+                            if(calculoActivos<0){
+                                cajaActivosHoy.setText(NumberFormat.getInstance().format(calculoActivos));
+                            }else{
+                                cajaActivosHoy.setText("+ "+NumberFormat.getInstance().format(calculoActivos));
+
+                            }
 
 
                         } catch (JSONException e) {

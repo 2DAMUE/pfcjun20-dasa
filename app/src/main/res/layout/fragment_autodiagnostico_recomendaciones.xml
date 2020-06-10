@@ -15,14 +15,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tab1"
-            android:text="TAB 1">
+            android:text="Autodiagnóstico">
         </com.google.android.material.tabs.TabItem>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tab2"
-            android:text="TAB 2">
+            android:text="Recomendaciones">
         </com.google.android.material.tabs.TabItem>
 
 

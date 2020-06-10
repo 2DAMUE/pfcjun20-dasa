@@ -83,9 +83,6 @@ public class SpainFragment extends Fragment implements TareaAsincrona.rellenarAr
         TareaAsincrona simpleTask= new TareaAsincrona(this);
         simpleTask.execute();
 
-
-
-
         return view;
     }
 
@@ -117,9 +114,23 @@ public class SpainFragment extends Fragment implements TareaAsincrona.rellenarAr
         int calculoFallecidos=fallecidosHoy-fallecidosAyer;
         int calculoRecuerados=nRecuperados-nRecuperados;
 
-        cajaSubidaConfirmados.setText("+ "+calculoConfirmados);
-        cajaSubidaFallecidos.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
-        cajaSubidaRecuerpados.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
+        if(calculoConfirmados<0){
+            cajaSubidaConfirmados.setText(calculoConfirmados);
+        }else{
+            cajaSubidaConfirmados.setText("+ "+calculoConfirmados);
+        }
+
+        if(calculoFallecidos<0){
+            cajaSubidaFallecidos.setText(NumberFormat.getInstance().format(calculoFallecidos));
+        }else{
+            cajaSubidaFallecidos.setText("+ "+NumberFormat.getInstance().format(calculoFallecidos));
+        }
+
+        if(calculoRecuerados<0){
+            cajaSubidaRecuerpados.setText(NumberFormat.getInstance().format(calculoRecuerados));
+        }else{
+            cajaSubidaRecuerpados.setText("+ "+NumberFormat.getInstance().format(calculoRecuerados));
+        }
 
         cajatexto.setText("*Datos actualizados a día "+lista.get(lista.size()-1).getFecha());
         cajaFechaAyer.setText(lista.get(lista.size()-2).getFecha());
