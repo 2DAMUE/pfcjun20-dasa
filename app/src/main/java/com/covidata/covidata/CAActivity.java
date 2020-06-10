@@ -101,7 +101,6 @@ public class CAActivity extends AppCompatActivity {
         builder.setMessage("Estos datos incluyen los casos confirmados " +
                 "por PCR más los casos por AC+ publicados por el Ministerio de Sanidad.");
 
-
         builder.setNeutralButton("CERRAR", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
