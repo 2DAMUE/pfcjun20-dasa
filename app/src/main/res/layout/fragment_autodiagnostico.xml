@@ -96,18 +96,18 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox"
+                    android:id="@+id/hipertension"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Hipertensión" />
+                    android:text="Hipertensión"/>
 
                 <CheckBox
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/diabetes"
                     android:layout_width="90dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Diabetes" />
+                    android:text="Diabetes"/>
 
             </LinearLayout>
 
@@ -120,14 +120,14 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox3"
+                    android:id="@+id/obesidad"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Obesidad" />
 
                 <CheckBox
-                    android:id="@+id/checkBox4"
+                    android:id="@+id/cancer"
                     android:layout_width="90dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -144,14 +144,14 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox5"
+                    android:id="@+id/enfermedadRenal"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Enfermedad renal" />
 
                 <CheckBox
-                    android:id="@+id/checkBox6"
+                    android:id="@+id/cardiopatia"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -168,14 +168,14 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox7"
+                    android:id="@+id/inmunosupresion"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Inmunosupresión" />
 
                 <CheckBox
-                    android:id="@+id/checkBox8"
+                    android:id="@+id/patologiaPulmonar"
                     android:layout_width="90dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -193,14 +193,14 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox9"
+                    android:id="@+id/neoplatiaActiva"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Neoplastias activas" />
 
                 <CheckBox
-                    android:id="@+id/checkBox10"
+                    android:id="@+id/patologiaHepatica"
                     android:layout_width="90dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -238,14 +238,14 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox11"
+                    android:id="@+id/fiebre"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Fiebre(38º o más)" />
 
                 <CheckBox
-                    android:id="@+id/checkBox12"
+                    android:id="@+id/cansancio"
                     android:layout_width="90dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -262,14 +262,14 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox13"
+                    android:id="@+id/tos"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Tos seca" />
 
                 <CheckBox
-                    android:id="@+id/checkBox14"
+                    android:id="@+id/respirar"
                     android:layout_width="90dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -286,14 +286,14 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox15"
+                    android:id="@+id/diarrea"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Diarrea" />
 
                 <CheckBox
-                    android:id="@+id/checkBox16"
+                    android:id="@+id/dolorGarganta"
                     android:layout_width="90dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -311,14 +311,14 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox17"
+                    android:id="@+id/vomitos"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Vómitos" />
 
                 <CheckBox
-                    android:id="@+id/checkBox18"
+                    android:id="@+id/dolorCabeza"
                     android:layout_width="90dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -376,6 +376,10 @@
             </RadioGroup>
 
         </LinearLayout>
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/boton">
+        </Button>
     </LinearLayout>
 </ScrollView>
