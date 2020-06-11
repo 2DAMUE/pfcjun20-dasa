@@ -54,22 +54,22 @@ public class ComunidadAutonomaFragment extends Fragment {
         lista.add("Andalucía");
         lista.add("Aragón");
         lista.add("Asturias");
+        lista.add("Canarias");
         lista.add("Cantabria");
         lista.add("Castilla-La Mancha");
         lista.add("Castilla León");
         lista.add("Cataluña");
+        lista.add("Ceuta");
+        lista.add("Comunidad de Madrid");
+        lista.add("Comunidad Valenciana");
         lista.add("Extremadura");
         lista.add("Galicia");
         lista.add("Islas Baleares");
-        lista.add("Canarias");
         lista.add("La Rioja");
-        lista.add("Comunidad de Madrid");
+        lista.add("Melilla");
         lista.add("Murcia");
         lista.add("Navarra");
         lista.add("Pais Vasco");
-        lista.add("Comunidad Valenciana");
-        lista.add("Ceuta");
-        lista.add("Melilla");
         return lista;
     }
 

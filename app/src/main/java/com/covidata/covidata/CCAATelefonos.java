@@ -4,10 +4,12 @@ public class CCAATelefonos {
 
     String nombre;
     String telefono;
+    int imagen;
 
-    public CCAATelefonos(String nombre, String telefono) {
+    public CCAATelefonos(String nombre, String telefono,int imagen) {
         this.nombre = nombre;
         this.telefono = telefono;
+        this.imagen = imagen;
     }
 
     public String getNombre() {
@@ -24,6 +26,14 @@ public class CCAATelefonos {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
     }
 
     @Override

@@ -14,4 +14,9 @@
     <color name="AmarilloDorado">#BF8A26</color>
     <color name="GrisOscuro">#6E6E6E</color>
     <color name="negro">#000000</color>
+    <color name="naranja">#F9CE9A</color>
+    <color name="amarillo">#FEF2A4</color>
+    <color name="verde">#B0F3B7</color>
+    <color name="rojo">#E8827D </color>
+
 </resources>

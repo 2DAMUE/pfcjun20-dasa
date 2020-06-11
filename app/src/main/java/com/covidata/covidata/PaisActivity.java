@@ -343,7 +343,7 @@ public class PaisActivity extends AppCompatActivity {
         paises.put("sudafrica",R.drawable.sudafrica);
         paises.put("tanzania",R.drawable.tanzania);
         paises.put("japon",R.drawable.japon);
-        paises.put("espana",R.drawable.espanacanariasno);
+        paises.put("espana",R.drawable.espanacuadrocanarias);
         paises.put("brasil",R.drawable.brasil);
         paises.put("nigeria",R.drawable.nigeria);
 
