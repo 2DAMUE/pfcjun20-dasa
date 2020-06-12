@@ -52,9 +52,13 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
             goToFragment(new SpainFragment(), false);
             setTitle(mTitles.get(1));
         }else if(datoInt==2){
-            mMenuAdapter.setViewSelected(0, true);
+            mMenuAdapter.setViewSelected(2, true);
             goToFragment(new ComunidadAutonomaFragment(), false);
             setTitle(mTitles.get(2));
+        }else if(datoInt==3){
+            mMenuAdapter.setViewSelected(3, true);
+            goToFragment(new ArticulosFragment(), false);
+            setTitle(mTitles.get(3));
         }else{
             mMenuAdapter.setViewSelected(0, true);
             goToFragment(new GlobalFragment(), false);
