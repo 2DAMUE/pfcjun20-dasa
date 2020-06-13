@@ -183,7 +183,7 @@ public class AutodiagnosticoFragment extends Fragment{
                     String texto="";
                     int contadorFinal=contadorContacto+contadorSintomas+contadorEnfermedades+contadoredad;
                     if(contadorFinal>=6){
-                        texto="Está en rieso, llame al siguiente teléfono";
+                        texto="Está en riesgo, llame al siguiente teléfono";
                         showAlertDialogButtonClicked(telefonoCCAA,nombreCCAA,R.color.rojo,texto,imagen);
                     }else if(contadorFinal>=4 && contadorFinal<=5){
                         texto="Puede estar en riesgo, llame al siguiente teléfono";
