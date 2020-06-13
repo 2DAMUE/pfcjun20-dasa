@@ -104,6 +104,7 @@
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
             android:textSize="16dp"
+            android:layout_marginRight="10dp"
             android:textColor="@color/negro"
             android:text="Evita tocarte los ojos, la nariz, y la boca, ya que las manos facilitan su transmisión."></TextView>
 
@@ -124,6 +125,7 @@
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
             android:textSize="16dp"
+            android:layout_marginRight="10dp"
             android:textColor="@color/negro"
             android:text="Utiliza mascarilla higiénica cuando no sea posible mantener la distancia de seguridad o en el transporte público."></TextView>
 

@@ -90,7 +90,7 @@ public class GlobalFragment extends Fragment {
 
                 if(iso==null){
                     Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Pais no encontrado", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                    toast.setGravity(Gravity.CENTER_HORIZONTAL,0,-600);
                     toast.show();
                 }else{
                     if(textoPais.equals("españa")){

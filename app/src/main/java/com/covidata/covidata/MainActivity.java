@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
                 goToFragment(new AutodiagnosticoRecomendacionesFragment(), false);
                 break;
             case 5:
-                goToFragment(new NuevoFragment(), false);
+                goToFragment(new AcercaDeFragment(), false);
                 break;
         }
 

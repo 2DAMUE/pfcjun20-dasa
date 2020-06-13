@@ -80,7 +80,7 @@ class MenuAdapter extends BaseAdapter {
         }else if(position==4){
             icono = contexto.getDrawable(R.drawable.ic_healthcare_and_medical);
         }else if(position==5){
-            icono = contexto.getDrawable(R.drawable.ic_communications);
+            icono = contexto.getDrawable(R.drawable.ic_acercade);
         }
         // Using the DuoOptionView's default selectors
         optionView.bind(option, icono, null);

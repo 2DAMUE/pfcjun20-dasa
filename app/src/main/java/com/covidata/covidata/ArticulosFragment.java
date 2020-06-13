@@ -59,6 +59,8 @@ public class ArticulosFragment extends Fragment {
         ArrayList<Articulo> listaArticulos= new ArrayList<>();
         listaArticulos.add(new Articulo("Mathematical modeling of the spread of the coronavirus disease 2019 (COVID-19) taking into account the undetected infections. The case of China.",
                 "B.Ivorra, M.R.Ferrández, M.Vela-Pérez, A.M.Ramos","https://www.sciencedirect.com/science/article/pii/S1007570420301350",R.drawable.articulo1));
+        listaArticulos.add(new Articulo("",
+                "Próximamente más articulos...","https://www.miatechaust.com.au/wp-content/uploads/2016/05/COMING-SOON-LOGO.png",0));
         return listaArticulos;
 
     }
