@@ -32,14 +32,23 @@ public class AcercaDeFragment extends Fragment {
 
         ImageView imagen1 = view.findViewById(R.id.imagen1);
         ImageView imagen2 = view.findViewById(R.id.imagen2);
-        Glide.with(this).load(R.drawable.imagen2).circleCrop().into(imagen1);
-        Glide.with(this).load(R.drawable.imagen1).circleCrop().into(imagen2);
+        Glide.with(this).load(R.drawable.david).circleCrop().into(imagen1);
+        Glide.with(this).load(R.drawable.sara).circleCrop().into(imagen2);
 
         imagen1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast toast = Toast.makeText(getActivity().getApplicationContext(), "David López Carmona", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER_HORIZONTAL,-200,-350);
+                toast.show();
+            }
+        });
+
+        imagen2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Sara Mulas Tejera", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER_HORIZONTAL,200,-350);
                 toast.show();
             }
         });

@@ -109,95 +109,101 @@ public class AutodiagnosticoFragment extends Fragment{
                     toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
                     toast.show();
                 }else{
-                    edadEntero=Integer.valueOf(edadRecogida);
-                    if(edadEntero>=45 && edadEntero <=60){
-                        contadoredad++;
-                    }else if(edadEntero>60){
-                        contadoredad=+2;
+                    try {
+                        edadEntero=Integer.valueOf(edadRecogida);
+                        if(edadEntero>=45 && edadEntero <=60){
+                            contadoredad++;
+                        }else if(edadEntero>60){
+                            contadoredad=+2;
+                        }
+
+                        if(fiebre.isChecked()){
+                            contadorSintomas++;
+                        }
+                        if(cansancio.isChecked()){
+                            contadorSintomas++;
+                        }
+                        if(tos.isChecked()){
+                            contadorSintomas++;
+                        }
+                        if(respirar.isChecked()){
+                            contadorSintomas++;
+                        }
+                        if(diarrea.isChecked()){
+                            contadorSintomas++;
+                        }
+                        if(dolorGarganta.isChecked()){
+                            contadorSintomas++;
+                        }
+                        if(vomitos.isChecked()){
+                            contadorSintomas++;
+                        }
+                        if(dolorCabeza.isChecked()){
+                            contadorSintomas++;
+                        }
+
+
+                        if (hipertension.isChecked()){
+                            contadorEnfermedades++;
+                        }
+                        if (diabetes.isChecked()){
+                            contadorEnfermedades++;
+                        }
+                        if (obesidad.isChecked()){
+                            contadorEnfermedades++;
+                        }
+                        if (cancer.isChecked()){
+                            contadorEnfermedades++;
+                        }
+                        if (enfermedadRenal.isChecked()){
+                            contadorEnfermedades++;
+                        }
+                        if (cardiopatia.isChecked()){
+                            contadorEnfermedades++;
+                        }
+                        if (inmunoSupresion.isChecked()){
+                            contadorEnfermedades++;
+                        }
+                        if (patologiaPulmonar.isChecked()){
+                            contadorEnfermedades++;
+                        }
+                        if (neoplastias.isChecked()){
+                            contadorEnfermedades++;
+                        }
+                        if (patologiaEpatica.isChecked()){
+                            contadorEnfermedades++;
+                        }
+
+                        if(si.isChecked()){
+                            contadorContacto++;
+                        }
+                        if(no.isChecked()){
+                            contadorContacto++;
+                        }
+
+                        String texto="";
+                        int contadorFinal=contadorContacto+contadorSintomas+contadorEnfermedades+contadoredad;
+                        if(contadorFinal>=6){
+                            texto="Está en riesgo, llame al siguiente teléfono";
+                            showAlertDialogButtonClicked(telefonoCCAA,nombreCCAA,R.color.rojo,texto,imagen);
+                        }else if(contadorFinal>=4 && contadorFinal<=5){
+                            texto="Puede estar en riesgo, llame al siguiente teléfono";
+                            showAlertDialogButtonClicked(telefonoCCAA,nombreCCAA,R.color.naranja,texto,imagen);
+                        }else if(contadorFinal>=2 && contadorFinal<=3){
+                            texto="Vigile sus sintomas y en caso de empeorar llame al siguiente teléfono";
+                            showAlertDialogButtonClicked(telefonoCCAA,nombreCCAA,R.color.amarillo,texto,imagen);
+                        }else if(contadorFinal<2){
+                            texto="Hay un riesgo muy bajo de que tenga la Covid-19";
+                            showAlertDialogButtonClicked("",nombreCCAA,R.color.verde,texto,imagen);
+                        }
+                    } catch (NumberFormatException nfe){
+                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "El campo edad es incorrecto", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                        toast.show();
                     }
 
-                    if(fiebre.isChecked()){
-                        contadorSintomas++;
-                    }
-                    if(cansancio.isChecked()){
-                        contadorSintomas++;
-                    }
-                    if(tos.isChecked()){
-                        contadorSintomas++;
-                    }
-                    if(respirar.isChecked()){
-                        contadorSintomas++;
-                    }
-                    if(diarrea.isChecked()){
-                        contadorSintomas++;
-                    }
-                    if(dolorGarganta.isChecked()){
-                        contadorSintomas++;
-                    }
-                    if(vomitos.isChecked()){
-                        contadorSintomas++;
-                    }
-                    if(dolorCabeza.isChecked()){
-                        contadorSintomas++;
-                    }
 
-
-                    if (hipertension.isChecked()){
-                        contadorEnfermedades++;
-                    }
-                    if (diabetes.isChecked()){
-                        contadorEnfermedades++;
-                    }
-                    if (obesidad.isChecked()){
-                        contadorEnfermedades++;
-                    }
-                    if (cancer.isChecked()){
-                        contadorEnfermedades++;
-                    }
-                    if (enfermedadRenal.isChecked()){
-                        contadorEnfermedades++;
-                    }
-                    if (cardiopatia.isChecked()){
-                        contadorEnfermedades++;
-                    }
-                    if (inmunoSupresion.isChecked()){
-                        contadorEnfermedades++;
-                    }
-                    if (patologiaPulmonar.isChecked()){
-                        contadorEnfermedades++;
-                    }
-                    if (neoplastias.isChecked()){
-                        contadorEnfermedades++;
-                    }
-                    if (patologiaEpatica.isChecked()){
-                        contadorEnfermedades++;
-                    }
-
-                    if(si.isChecked()){
-                        contadorContacto++;
-                    }
-                    if(no.isChecked()){
-                        contadorContacto++;
-                    }
-
-                    String texto="";
-                    int contadorFinal=contadorContacto+contadorSintomas+contadorEnfermedades+contadoredad;
-                    if(contadorFinal>=6){
-                        texto="Está en riesgo, llame al siguiente teléfono";
-                        showAlertDialogButtonClicked(telefonoCCAA,nombreCCAA,R.color.rojo,texto,imagen);
-                    }else if(contadorFinal>=4 && contadorFinal<=5){
-                        texto="Puede estar en riesgo, llame al siguiente teléfono";
-                        showAlertDialogButtonClicked(telefonoCCAA,nombreCCAA,R.color.naranja,texto,imagen);
-                    }else if(contadorFinal>=2 && contadorFinal<=3){
-                        texto="Vigile sus sintomas y en caso de empeorar llame al siguiente teléfono";
-                        showAlertDialogButtonClicked(telefonoCCAA,nombreCCAA,R.color.amarillo,texto,imagen);
-                    }else if(contadorFinal<2){
-                        texto="Hay un riesgo muy bajo de que tenga la Covid-19";
-                        showAlertDialogButtonClicked("",nombreCCAA,R.color.verde,texto,imagen);
-                    }
                 }
-
-
 
                 Log.e("contadorEdad",""+contadoredad);
                 Log.e("contadorSintomas",""+contadorSintomas);
@@ -206,9 +212,6 @@ public class AutodiagnosticoFragment extends Fragment{
 
             }
         });
-
-
-
 
         return view;
     }
